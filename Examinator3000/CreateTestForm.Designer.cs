@@ -1,6 +1,6 @@
 ﻿namespace Examinator3000
 {
-    partial class CreateQuizForm
+    partial class CreateTestForm
     {
         /// <summary>
         /// Required designer variable.
@@ -43,19 +43,24 @@
             panel4 = new Panel();
             IsPictureQuestionCheckBox = new CheckBox();
             panel3 = new Panel();
+            AddAnswerButton = new Button();
+            HasImageAnswerCheckBox = new CheckBox();
+            IsCorrectAnswerCheckBox = new CheckBox();
+            AnswerTextRichTextBox = new RichTextBox();
+            AnswerTextLabel = new Label();
             QuestionLabel = new Label();
             AnswerLabel = new Label();
-            PicturePreviewLabel = new Label();
+            ImagePreviewLabel = new Label();
             QuestionsLabel = new Label();
             AnswersLabel = new Label();
-            AnswerTextLabel = new Label();
-            AnswerTextRichTextBox = new RichTextBox();
-            IsCorrectAnswerCheckBox = new CheckBox();
-            HasOnlyOneAnswerCheckBox = new CheckBox();
-            AddAnswerButton = new Button();
+            AnswerImagePathLabel = new Label();
+            AnswerImagePathTextBox = new TextBox();
+            ImagePreviewAnswerLabel = new Label();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)PicturePreviewPictureBox).BeginInit();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // QuestionsListBox
@@ -69,8 +74,8 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.Silver;
-            panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.BackColor = Color.FromArgb(225, 137, 59);
+            panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Location = new Point(1418, 12);
             panel1.Name = "panel1";
             panel1.Size = new Size(36, 982);
@@ -105,7 +110,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.PeachPuff;
+            panel2.BackColor = Color.FromArgb(0, 64, 90);
             panel2.BorderStyle = BorderStyle.Fixed3D;
             panel2.Controls.Add(TextBelowImageRichTextBox);
             panel2.Controls.Add(TextBelowImageLabel);
@@ -132,6 +137,7 @@
             // 
             TextBelowImageLabel.AutoSize = true;
             TextBelowImageLabel.Font = new Font("Verdana", 9.75F);
+            TextBelowImageLabel.ForeColor = SystemColors.Control;
             TextBelowImageLabel.Location = new Point(11, 373);
             TextBelowImageLabel.Name = "TextBelowImageLabel";
             TextBelowImageLabel.Size = new Size(130, 16);
@@ -149,6 +155,7 @@
             // 
             ImagePathLabel.AutoSize = true;
             ImagePathLabel.Font = new Font("Verdana", 9.75F);
+            ImagePathLabel.ForeColor = SystemColors.Control;
             ImagePathLabel.Location = new Point(11, 344);
             ImagePathLabel.Name = "ImagePathLabel";
             ImagePathLabel.Size = new Size(88, 16);
@@ -159,6 +166,7 @@
             // 
             TextAboveImageLabel.AutoSize = true;
             TextAboveImageLabel.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TextAboveImageLabel.ForeColor = SystemColors.Control;
             TextAboveImageLabel.Location = new Point(11, 89);
             TextAboveImageLabel.Name = "TextAboveImageLabel";
             TextAboveImageLabel.Size = new Size(133, 16);
@@ -175,8 +183,8 @@
             // 
             // panel4
             // 
-            panel4.BackColor = Color.Tan;
-            panel4.BorderStyle = BorderStyle.Fixed3D;
+            panel4.BackColor = Color.FromArgb(225, 137, 59);
+            panel4.BorderStyle = BorderStyle.FixedSingle;
             panel4.Location = new Point(17, 57);
             panel4.Name = "panel4";
             panel4.Size = new Size(764, 12);
@@ -186,19 +194,23 @@
             // 
             IsPictureQuestionCheckBox.AutoSize = true;
             IsPictureQuestionCheckBox.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            IsPictureQuestionCheckBox.ForeColor = SystemColors.Control;
             IsPictureQuestionCheckBox.Location = new Point(17, 20);
             IsPictureQuestionCheckBox.Name = "IsPictureQuestionCheckBox";
             IsPictureQuestionCheckBox.Size = new Size(185, 22);
             IsPictureQuestionCheckBox.TabIndex = 0;
             IsPictureQuestionCheckBox.Text = "Is Picture Question";
             IsPictureQuestionCheckBox.UseVisualStyleBackColor = true;
+            IsPictureQuestionCheckBox.CheckedChanged += IsPictureQuestionCheckBox_CheckedChanged;
             // 
             // panel3
             // 
-            panel3.BackColor = SystemColors.ActiveCaption;
+            panel3.BackColor = Color.FromArgb(225, 137, 59);
             panel3.BorderStyle = BorderStyle.Fixed3D;
+            panel3.Controls.Add(AnswerImagePathTextBox);
+            panel3.Controls.Add(AnswerImagePathLabel);
             panel3.Controls.Add(AddAnswerButton);
-            panel3.Controls.Add(HasOnlyOneAnswerCheckBox);
+            panel3.Controls.Add(HasImageAnswerCheckBox);
             panel3.Controls.Add(IsCorrectAnswerCheckBox);
             panel3.Controls.Add(AnswerTextRichTextBox);
             panel3.Controls.Add(AnswerTextLabel);
@@ -207,73 +219,26 @@
             panel3.Size = new Size(808, 319);
             panel3.TabIndex = 6;
             // 
-            // QuestionLabel
+            // AddAnswerButton
             // 
-            QuestionLabel.AutoSize = true;
-            QuestionLabel.Font = new Font("Verdana", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            QuestionLabel.Location = new Point(25, 19);
-            QuestionLabel.Name = "QuestionLabel";
-            QuestionLabel.Size = new Size(117, 25);
-            QuestionLabel.TabIndex = 7;
-            QuestionLabel.Text = "Question";
+            AddAnswerButton.Font = new Font("Verdana", 14.25F);
+            AddAnswerButton.Location = new Point(556, 244);
+            AddAnswerButton.Name = "AddAnswerButton";
+            AddAnswerButton.Size = new Size(225, 55);
+            AddAnswerButton.TabIndex = 4;
+            AddAnswerButton.Text = "Add Answer";
+            AddAnswerButton.UseVisualStyleBackColor = true;
             // 
-            // AnswerLabel
+            // HasImageAnswerCheckBox
             // 
-            AnswerLabel.AutoSize = true;
-            AnswerLabel.Font = new Font("Verdana", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            AnswerLabel.Location = new Point(25, 620);
-            AnswerLabel.Name = "AnswerLabel";
-            AnswerLabel.Size = new Size(100, 25);
-            AnswerLabel.TabIndex = 8;
-            AnswerLabel.Text = "Answer";
-            // 
-            // PicturePreviewLabel
-            // 
-            PicturePreviewLabel.AutoSize = true;
-            PicturePreviewLabel.Font = new Font("Verdana", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            PicturePreviewLabel.Location = new Point(854, 19);
-            PicturePreviewLabel.Name = "PicturePreviewLabel";
-            PicturePreviewLabel.Size = new Size(197, 25);
-            PicturePreviewLabel.TabIndex = 9;
-            PicturePreviewLabel.Text = "Picture Preview";
-            // 
-            // QuestionsLabel
-            // 
-            QuestionsLabel.AutoSize = true;
-            QuestionsLabel.Font = new Font("Verdana", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            QuestionsLabel.Location = new Point(1471, 19);
-            QuestionsLabel.Name = "QuestionsLabel";
-            QuestionsLabel.Size = new Size(129, 25);
-            QuestionsLabel.TabIndex = 10;
-            QuestionsLabel.Text = "Questions";
-            // 
-            // AnswersLabel
-            // 
-            AnswersLabel.AutoSize = true;
-            AnswersLabel.Font = new Font("Verdana", 15.75F, FontStyle.Bold);
-            AnswersLabel.Location = new Point(854, 620);
-            AnswersLabel.Name = "AnswersLabel";
-            AnswersLabel.Size = new Size(112, 25);
-            AnswersLabel.TabIndex = 11;
-            AnswersLabel.Text = "Answers";
-            // 
-            // AnswerTextLabel
-            // 
-            AnswerTextLabel.AutoSize = true;
-            AnswerTextLabel.Font = new Font("Verdana", 9.75F);
-            AnswerTextLabel.Location = new Point(11, 19);
-            AnswerTextLabel.Name = "AnswerTextLabel";
-            AnswerTextLabel.Size = new Size(95, 16);
-            AnswerTextLabel.TabIndex = 0;
-            AnswerTextLabel.Text = "Answer Text:";
-            // 
-            // AnswerTextRichTextBox
-            // 
-            AnswerTextRichTextBox.Location = new Point(143, 17);
-            AnswerTextRichTextBox.Name = "AnswerTextRichTextBox";
-            AnswerTextRichTextBox.Size = new Size(638, 209);
-            AnswerTextRichTextBox.TabIndex = 1;
-            AnswerTextRichTextBox.Text = "";
+            HasImageAnswerCheckBox.AutoSize = true;
+            HasImageAnswerCheckBox.Font = new Font("Verdana", 9.75F);
+            HasImageAnswerCheckBox.Location = new Point(11, 254);
+            HasImageAnswerCheckBox.Name = "HasImageAnswerCheckBox";
+            HasImageAnswerCheckBox.Size = new Size(148, 20);
+            HasImageAnswerCheckBox.TabIndex = 3;
+            HasImageAnswerCheckBox.Text = "Has Image Answer";
+            HasImageAnswerCheckBox.UseVisualStyleBackColor = true;
             // 
             // IsCorrectAnswerCheckBox
             // 
@@ -286,35 +251,126 @@
             IsCorrectAnswerCheckBox.Text = "Is Correct Answer";
             IsCorrectAnswerCheckBox.UseVisualStyleBackColor = true;
             // 
-            // HasOnlyOneAnswerCheckBox
+            // AnswerTextRichTextBox
             // 
-            HasOnlyOneAnswerCheckBox.AutoSize = true;
-            HasOnlyOneAnswerCheckBox.Font = new Font("Verdana", 9.75F);
-            HasOnlyOneAnswerCheckBox.Location = new Point(11, 254);
-            HasOnlyOneAnswerCheckBox.Name = "HasOnlyOneAnswerCheckBox";
-            HasOnlyOneAnswerCheckBox.Size = new Size(168, 20);
-            HasOnlyOneAnswerCheckBox.TabIndex = 3;
-            HasOnlyOneAnswerCheckBox.Text = "Has Only One Answer";
-            HasOnlyOneAnswerCheckBox.UseVisualStyleBackColor = true;
+            AnswerTextRichTextBox.Location = new Point(143, 17);
+            AnswerTextRichTextBox.Name = "AnswerTextRichTextBox";
+            AnswerTextRichTextBox.Size = new Size(638, 177);
+            AnswerTextRichTextBox.TabIndex = 1;
+            AnswerTextRichTextBox.Text = "";
             // 
-            // AddAnswerButton
+            // AnswerTextLabel
             // 
-            AddAnswerButton.Font = new Font("Verdana", 14.25F);
-            AddAnswerButton.Location = new Point(556, 244);
-            AddAnswerButton.Name = "AddAnswerButton";
-            AddAnswerButton.Size = new Size(225, 55);
-            AddAnswerButton.TabIndex = 4;
-            AddAnswerButton.Text = "Add Answer";
-            AddAnswerButton.UseVisualStyleBackColor = true;
+            AnswerTextLabel.AutoSize = true;
+            AnswerTextLabel.Font = new Font("Verdana", 9.75F);
+            AnswerTextLabel.Location = new Point(11, 19);
+            AnswerTextLabel.Name = "AnswerTextLabel";
+            AnswerTextLabel.Size = new Size(95, 16);
+            AnswerTextLabel.TabIndex = 0;
+            AnswerTextLabel.Text = "Answer Text:";
             // 
-            // CreateQuizForm
+            // QuestionLabel
+            // 
+            QuestionLabel.AutoSize = true;
+            QuestionLabel.Font = new Font("Verdana", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            QuestionLabel.ForeColor = SystemColors.Control;
+            QuestionLabel.Location = new Point(25, 19);
+            QuestionLabel.Name = "QuestionLabel";
+            QuestionLabel.Size = new Size(117, 25);
+            QuestionLabel.TabIndex = 7;
+            QuestionLabel.Text = "Question";
+            // 
+            // AnswerLabel
+            // 
+            AnswerLabel.AutoSize = true;
+            AnswerLabel.Font = new Font("Verdana", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            AnswerLabel.ForeColor = SystemColors.Control;
+            AnswerLabel.Location = new Point(25, 620);
+            AnswerLabel.Name = "AnswerLabel";
+            AnswerLabel.Size = new Size(100, 25);
+            AnswerLabel.TabIndex = 8;
+            AnswerLabel.Text = "Answer";
+            // 
+            // ImagePreviewLabel
+            // 
+            ImagePreviewLabel.AutoSize = true;
+            ImagePreviewLabel.Font = new Font("Verdana", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ImagePreviewLabel.ForeColor = SystemColors.Control;
+            ImagePreviewLabel.Location = new Point(854, 19);
+            ImagePreviewLabel.Name = "ImagePreviewLabel";
+            ImagePreviewLabel.Size = new Size(319, 25);
+            ImagePreviewLabel.TabIndex = 9;
+            ImagePreviewLabel.Text = "Image Preview - Question";
+            // 
+            // QuestionsLabel
+            // 
+            QuestionsLabel.AutoSize = true;
+            QuestionsLabel.Font = new Font("Verdana", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            QuestionsLabel.ForeColor = SystemColors.Control;
+            QuestionsLabel.Location = new Point(1471, 19);
+            QuestionsLabel.Name = "QuestionsLabel";
+            QuestionsLabel.Size = new Size(129, 25);
+            QuestionsLabel.TabIndex = 10;
+            QuestionsLabel.Text = "Questions";
+            // 
+            // AnswersLabel
+            // 
+            AnswersLabel.AutoSize = true;
+            AnswersLabel.Font = new Font("Verdana", 15.75F, FontStyle.Bold);
+            AnswersLabel.ForeColor = SystemColors.Control;
+            AnswersLabel.Location = new Point(854, 620);
+            AnswersLabel.Name = "AnswersLabel";
+            AnswersLabel.Size = new Size(112, 25);
+            AnswersLabel.TabIndex = 11;
+            AnswersLabel.Text = "Answers";
+            // 
+            // AnswerImagePathLabel
+            // 
+            AnswerImagePathLabel.AutoSize = true;
+            AnswerImagePathLabel.Font = new Font("Verdana", 9.75F);
+            AnswerImagePathLabel.Location = new Point(11, 211);
+            AnswerImagePathLabel.Name = "AnswerImagePathLabel";
+            AnswerImagePathLabel.Size = new Size(88, 16);
+            AnswerImagePathLabel.TabIndex = 5;
+            AnswerImagePathLabel.Text = "Image Path:";
+            // 
+            // AnswerImagePathTextBox
+            // 
+            AnswerImagePathTextBox.Location = new Point(143, 204);
+            AnswerImagePathTextBox.Name = "AnswerImagePathTextBox";
+            AnswerImagePathTextBox.Size = new Size(638, 23);
+            AnswerImagePathTextBox.TabIndex = 6;
+            // 
+            // ImagePreviewAnswerLabel
+            // 
+            ImagePreviewAnswerLabel.AutoSize = true;
+            ImagePreviewAnswerLabel.Font = new Font("Verdana", 15.75F, FontStyle.Bold);
+            ImagePreviewAnswerLabel.ForeColor = SystemColors.Control;
+            ImagePreviewAnswerLabel.Location = new Point(854, 322);
+            ImagePreviewAnswerLabel.Name = "ImagePreviewAnswerLabel";
+            ImagePreviewAnswerLabel.Size = new Size(302, 25);
+            ImagePreviewAnswerLabel.TabIndex = 12;
+            ImagePreviewAnswerLabel.Text = "Image Preview - Answer";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(854, 369);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(530, 241);
+            pictureBox1.TabIndex = 13;
+            pictureBox1.TabStop = false;
+            // 
+            // CreateTestForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(13, 59, 76);
             ClientSize = new Size(1711, 1006);
+            Controls.Add(pictureBox1);
+            Controls.Add(ImagePreviewAnswerLabel);
             Controls.Add(AnswersLabel);
             Controls.Add(QuestionsLabel);
-            Controls.Add(PicturePreviewLabel);
+            Controls.Add(ImagePreviewLabel);
             Controls.Add(AnswerLabel);
             Controls.Add(QuestionLabel);
             Controls.Add(panel3);
@@ -324,13 +380,14 @@
             Controls.Add(AddQuestionButton);
             Controls.Add(panel1);
             Controls.Add(QuestionsListBox);
-            Name = "CreateQuizForm";
+            Name = "CreateTestForm";
             Text = "CreateQuizForm";
             ((System.ComponentModel.ISupportInitialize)PicturePreviewPictureBox).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -346,7 +403,7 @@
         private Panel panel3;
         private Label QuestionLabel;
         private Label AnswerLabel;
-        private Label PicturePreviewLabel;
+        private Label ImagePreviewLabel;
         private CheckBox IsPictureQuestionCheckBox;
         private Label QuestionsLabel;
         private Panel panel4;
@@ -357,10 +414,14 @@
         private Label AnswersLabel;
         private Label TextBelowImageLabel;
         private RichTextBox TextBelowImageRichTextBox;
-        private CheckBox HasOnlyOneAnswerCheckBox;
+        private CheckBox HasImageAnswerCheckBox;
         private CheckBox IsCorrectAnswerCheckBox;
         private RichTextBox AnswerTextRichTextBox;
         private Label AnswerTextLabel;
         private Button AddAnswerButton;
+        private TextBox AnswerImagePathTextBox;
+        private Label AnswerImagePathLabel;
+        private Label ImagePreviewAnswerLabel;
+        private PictureBox pictureBox1;
     }
 }

@@ -28,160 +28,179 @@
         /// </summary>
         private void InitializeComponent()
         {
-            TestListBox = new ListBox();
-            CreateNewButton = new Button();
-            button1 = new Button();
+            TestsListBox = new ListBox();
+            CreateNewTestButton = new Button();
+            StartAllQuestionsButton = new Button();
             colorDialog1 = new ColorDialog();
-            label1 = new Label();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
+            TestNameLabel = new Label();
+            StartArchivedQuestionsButton = new Button();
+            StartWeakQuestionsButton = new Button();
+            StartMixedQuestionsButton = new Button();
+            AmountOfQuestionsLabel = new Label();
+            CorrectPrecentageLabel = new Label();
+            AmountOfRepetitionsLabel = new Label();
+            AmountOfArchivedQuestionsLabel = new Label();
             panel1 = new Panel();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // TestListBox
+            // TestsListBox
             // 
-            TestListBox.FormattingEnabled = true;
-            TestListBox.ItemHeight = 15;
-            TestListBox.Location = new Point(42, 39);
-            TestListBox.Name = "TestListBox";
-            TestListBox.Size = new Size(499, 784);
-            TestListBox.TabIndex = 0;
+            TestsListBox.FormattingEnabled = true;
+            TestsListBox.ItemHeight = 15;
+            TestsListBox.Location = new Point(42, 69);
+            TestsListBox.Name = "TestsListBox";
+            TestsListBox.Size = new Size(499, 709);
+            TestsListBox.TabIndex = 0;
             // 
-            // CreateNewButton
+            // CreateNewTestButton
             // 
-            CreateNewButton.BackColor = Color.ForestGreen;
-            CreateNewButton.FlatStyle = FlatStyle.Flat;
-            CreateNewButton.Font = new Font("Verdana", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            CreateNewButton.Location = new Point(42, 863);
-            CreateNewButton.Name = "CreateNewButton";
-            CreateNewButton.Size = new Size(499, 73);
-            CreateNewButton.TabIndex = 1;
-            CreateNewButton.Text = "Create New Test";
-            CreateNewButton.UseVisualStyleBackColor = false;
+            CreateNewTestButton.BackColor = Color.FromArgb(225, 137, 59);
+            CreateNewTestButton.FlatStyle = FlatStyle.Popup;
+            CreateNewTestButton.Font = new Font("Verdana", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            CreateNewTestButton.Location = new Point(42, 818);
+            CreateNewTestButton.Name = "CreateNewTestButton";
+            CreateNewTestButton.Size = new Size(499, 118);
+            CreateNewTestButton.TabIndex = 1;
+            CreateNewTestButton.Text = "Create New Test";
+            CreateNewTestButton.UseVisualStyleBackColor = false;
+            CreateNewTestButton.Click += CreateNewTestButton_Click;
             // 
-            // button1
+            // StartAllQuestionsButton
             // 
-            button1.Font = new Font("Verdana", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(690, 705);
-            button1.Name = "button1";
-            button1.Size = new Size(236, 118);
-            button1.TabIndex = 2;
-            button1.Text = "Start All Questions";
-            button1.UseVisualStyleBackColor = true;
+            StartAllQuestionsButton.BackColor = Color.FromArgb(0, 75, 98);
+            StartAllQuestionsButton.FlatStyle = FlatStyle.Popup;
+            StartAllQuestionsButton.Font = new Font("Verdana", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            StartAllQuestionsButton.ForeColor = SystemColors.Control;
+            StartAllQuestionsButton.Location = new Point(690, 818);
+            StartAllQuestionsButton.Name = "StartAllQuestionsButton";
+            StartAllQuestionsButton.Size = new Size(236, 118);
+            StartAllQuestionsButton.TabIndex = 2;
+            StartAllQuestionsButton.Text = "Start - All Questions";
+            StartAllQuestionsButton.UseVisualStyleBackColor = false;
             // 
-            // label1
+            // TestNameLabel
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Verdana", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(31, 34);
-            label1.Name = "label1";
-            label1.Size = new Size(124, 25);
-            label1.TabIndex = 3;
-            label1.Text = "Testname:";
+            TestNameLabel.AutoSize = true;
+            TestNameLabel.Font = new Font("Verdana", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TestNameLabel.ForeColor = SystemColors.Control;
+            TestNameLabel.Location = new Point(31, 85);
+            TestNameLabel.Name = "TestNameLabel";
+            TestNameLabel.Size = new Size(124, 25);
+            TestNameLabel.TabIndex = 3;
+            TestNameLabel.Text = "Testname:";
             // 
-            // button2
+            // StartArchivedQuestionsButton
             // 
-            button2.Font = new Font("Verdana", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(950, 705);
-            button2.Name = "button2";
-            button2.Size = new Size(236, 118);
-            button2.TabIndex = 4;
-            button2.Text = "Start Archived Questions";
-            button2.UseVisualStyleBackColor = true;
+            StartArchivedQuestionsButton.BackColor = Color.FromArgb(0, 75, 98);
+            StartArchivedQuestionsButton.FlatStyle = FlatStyle.Popup;
+            StartArchivedQuestionsButton.Font = new Font("Verdana", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            StartArchivedQuestionsButton.ForeColor = SystemColors.Control;
+            StartArchivedQuestionsButton.Location = new Point(950, 818);
+            StartArchivedQuestionsButton.Name = "StartArchivedQuestionsButton";
+            StartArchivedQuestionsButton.Size = new Size(236, 118);
+            StartArchivedQuestionsButton.TabIndex = 4;
+            StartArchivedQuestionsButton.Text = "Start - Archived Questions";
+            StartArchivedQuestionsButton.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // StartWeakQuestionsButton
             // 
-            button3.Font = new Font("Verdana", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.Location = new Point(1211, 705);
-            button3.Name = "button3";
-            button3.Size = new Size(236, 118);
-            button3.TabIndex = 5;
-            button3.Text = "Start Weak Questions";
-            button3.UseVisualStyleBackColor = true;
+            StartWeakQuestionsButton.BackColor = Color.FromArgb(0, 75, 98);
+            StartWeakQuestionsButton.FlatStyle = FlatStyle.Popup;
+            StartWeakQuestionsButton.Font = new Font("Verdana", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            StartWeakQuestionsButton.ForeColor = SystemColors.Control;
+            StartWeakQuestionsButton.Location = new Point(1211, 818);
+            StartWeakQuestionsButton.Name = "StartWeakQuestionsButton";
+            StartWeakQuestionsButton.Size = new Size(236, 118);
+            StartWeakQuestionsButton.TabIndex = 5;
+            StartWeakQuestionsButton.Text = "Start - Weak Questions";
+            StartWeakQuestionsButton.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // StartMixedQuestionsButton
             // 
-            button4.Font = new Font("Verdana", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button4.Location = new Point(1473, 705);
-            button4.Name = "button4";
-            button4.Size = new Size(236, 118);
-            button4.TabIndex = 6;
-            button4.Text = "Start Mixed Questions";
-            button4.UseVisualStyleBackColor = true;
+            StartMixedQuestionsButton.BackColor = Color.FromArgb(0, 75, 98);
+            StartMixedQuestionsButton.FlatStyle = FlatStyle.Popup;
+            StartMixedQuestionsButton.Font = new Font("Verdana", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            StartMixedQuestionsButton.ForeColor = SystemColors.Control;
+            StartMixedQuestionsButton.Location = new Point(1473, 818);
+            StartMixedQuestionsButton.Name = "StartMixedQuestionsButton";
+            StartMixedQuestionsButton.Size = new Size(236, 118);
+            StartMixedQuestionsButton.TabIndex = 6;
+            StartMixedQuestionsButton.Text = "Start - Mixed Questions";
+            StartMixedQuestionsButton.UseVisualStyleBackColor = false;
             // 
-            // label2
+            // AmountOfQuestionsLabel
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Verdana", 15.75F);
-            label2.Location = new Point(31, 88);
-            label2.Name = "label2";
-            label2.Size = new Size(242, 25);
-            label2.TabIndex = 7;
-            label2.Text = "Amount of Questions:";
+            AmountOfQuestionsLabel.AutoSize = true;
+            AmountOfQuestionsLabel.Font = new Font("Verdana", 15.75F);
+            AmountOfQuestionsLabel.ForeColor = SystemColors.Control;
+            AmountOfQuestionsLabel.Location = new Point(31, 169);
+            AmountOfQuestionsLabel.Name = "AmountOfQuestionsLabel";
+            AmountOfQuestionsLabel.Size = new Size(242, 25);
+            AmountOfQuestionsLabel.TabIndex = 7;
+            AmountOfQuestionsLabel.Text = "Amount of Questions:";
             // 
-            // label3
+            // CorrectPrecentageLabel
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Verdana", 15.75F);
-            label3.Location = new Point(31, 143);
-            label3.Name = "label3";
-            label3.Size = new Size(225, 25);
-            label3.TabIndex = 8;
-            label3.Text = "Correct Percentage:";
+            CorrectPrecentageLabel.AutoSize = true;
+            CorrectPrecentageLabel.Font = new Font("Verdana", 15.75F);
+            CorrectPrecentageLabel.ForeColor = SystemColors.Control;
+            CorrectPrecentageLabel.Location = new Point(31, 261);
+            CorrectPrecentageLabel.Name = "CorrectPrecentageLabel";
+            CorrectPrecentageLabel.Size = new Size(225, 25);
+            CorrectPrecentageLabel.TabIndex = 8;
+            CorrectPrecentageLabel.Text = "Correct Percentage:";
             // 
-            // label4
+            // AmountOfRepetitionsLabel
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Verdana", 15.75F);
-            label4.Location = new Point(31, 205);
-            label4.Name = "label4";
-            label4.Size = new Size(255, 25);
-            label4.TabIndex = 9;
-            label4.Text = "Amount of Repetitions:";
+            AmountOfRepetitionsLabel.AutoSize = true;
+            AmountOfRepetitionsLabel.Font = new Font("Verdana", 15.75F);
+            AmountOfRepetitionsLabel.ForeColor = SystemColors.Control;
+            AmountOfRepetitionsLabel.Location = new Point(31, 355);
+            AmountOfRepetitionsLabel.Name = "AmountOfRepetitionsLabel";
+            AmountOfRepetitionsLabel.Size = new Size(255, 25);
+            AmountOfRepetitionsLabel.TabIndex = 9;
+            AmountOfRepetitionsLabel.Text = "Amount of Repetitions:";
             // 
-            // label5
+            // AmountOfArchivedQuestionsLabel
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Verdana", 15.75F);
-            label5.Location = new Point(31, 273);
-            label5.Name = "label5";
-            label5.Size = new Size(340, 25);
-            label5.TabIndex = 10;
-            label5.Text = "Amount of Archived Questions:";
+            AmountOfArchivedQuestionsLabel.AutoSize = true;
+            AmountOfArchivedQuestionsLabel.Font = new Font("Verdana", 15.75F);
+            AmountOfArchivedQuestionsLabel.ForeColor = SystemColors.Control;
+            AmountOfArchivedQuestionsLabel.Location = new Point(31, 447);
+            AmountOfArchivedQuestionsLabel.Name = "AmountOfArchivedQuestionsLabel";
+            AmountOfArchivedQuestionsLabel.Size = new Size(340, 25);
+            AmountOfArchivedQuestionsLabel.TabIndex = 10;
+            AmountOfArchivedQuestionsLabel.Text = "Amount of Archived Questions:";
             // 
             // panel1
             // 
-            panel1.BackColor = Color.SlateGray;
+            panel1.BackColor = Color.FromArgb(0, 64, 90);
             panel1.BackgroundImageLayout = ImageLayout.Center;
-            panel1.BorderStyle = BorderStyle.Fixed3D;
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(label3);
-            panel1.Location = new Point(690, 39);
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(AmountOfArchivedQuestionsLabel);
+            panel1.Controls.Add(TestNameLabel);
+            panel1.Controls.Add(AmountOfRepetitionsLabel);
+            panel1.Controls.Add(AmountOfQuestionsLabel);
+            panel1.Controls.Add(CorrectPrecentageLabel);
+            panel1.Location = new Point(690, 69);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1019, 427);
+            panel1.Size = new Size(1019, 709);
             panel1.TabIndex = 1;
             // 
             // Examinator3000Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(13, 59, 76);
             ClientSize = new Size(1822, 971);
             Controls.Add(panel1);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(CreateNewButton);
-            Controls.Add(TestListBox);
+            Controls.Add(StartMixedQuestionsButton);
+            Controls.Add(StartWeakQuestionsButton);
+            Controls.Add(StartArchivedQuestionsButton);
+            Controls.Add(StartAllQuestionsButton);
+            Controls.Add(CreateNewTestButton);
+            Controls.Add(TestsListBox);
             Name = "Examinator3000Main";
             Text = "Examinator3000Main";
             panel1.ResumeLayout(false);
@@ -191,18 +210,18 @@
 
         #endregion
 
-        private ListBox TestListBox;
-        private Button CreateNewButton;
-        private Button button1;
+        private ListBox TestsListBox;
+        private Button CreateNewTestButton;
+        private Button StartAllQuestionsButton;
         private ColorDialog colorDialog1;
-        private Label label1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
+        private Label TestNameLabel;
+        private Button StartArchivedQuestionsButton;
+        private Button StartWeakQuestionsButton;
+        private Button StartMixedQuestionsButton;
+        private Label AmountOfQuestionsLabel;
+        private Label CorrectPrecentageLabel;
+        private Label AmountOfRepetitionsLabel;
+        private Label AmountOfArchivedQuestionsLabel;
         private Panel panel1;
     }
 }

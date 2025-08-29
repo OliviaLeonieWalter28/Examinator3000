@@ -7,5 +7,10 @@ namespace Examinator3000
             InitializeComponent();
         }
 
+        private void CreateNewTestButton_Click(object sender, EventArgs e)
+        {
+           CreateTestMainForm createTestMainForm = new CreateTestMainForm();
+           createTestMainForm.ShowDialog();
+        }
     }
 }

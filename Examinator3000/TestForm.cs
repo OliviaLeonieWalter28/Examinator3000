@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Examinator3000
 {
-    public partial class CreateQuizForm : Form
+    public partial class TestForm : Form
     {
-        public CreateQuizForm()
+        public TestForm()
         {
             InitializeComponent();
         }

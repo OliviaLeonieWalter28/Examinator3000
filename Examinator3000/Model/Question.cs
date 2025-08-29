@@ -10,11 +10,11 @@ namespace Examinator3000.Model
     {
         public string QuestionText { get; set; }    
         public string QuestionImage { get; set; }
-        public bool HasAnswerAlterntive { get; set; }
         private bool isPictureQuestion;
+
         public List<Answer> AnswerList;
 
-        public Question(string questionText, string questionImage, List<Answer> answers, bool hasAnswerAlterntive)
+        public Question(string questionText, string questionImage, List<Answer> answers)
         {
             AnswerList = new List<Answer>();
             QuestionText = questionText;
@@ -28,8 +28,7 @@ namespace Examinator3000.Model
             {
                 isPictureQuestion = true;
                 QuestionImage = questionImage;
-            }
-            HasAnswerAlterntive = hasAnswerAlterntive;  
+            } 
 
             foreach (Answer answer in answers)
             {
