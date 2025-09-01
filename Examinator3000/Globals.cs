@@ -41,8 +41,20 @@ namespace Examinator3000
             answers.Add(answer4);
 
             var question = new Question("This is a Test Question", null, answers);
+
+            var answer5 = new Answer("more correct", true);
+            answers.Add(answer5);
+
+
+            var question2 = new Question("This is a Test Question", null, answers);
+
             var test = new Test("AZ-204");
-            test.AddNewQuestion(question);  
+            test.AddNewQuestion(question);
+            test.AddNewQuestion(question2);
+            question.QuestionText = "This is a Test Question 2.0";
+            test.AddNewQuestion(question);
+            question.QuestionText = "This is a Test Question 3.0";
+            test.AddNewQuestion(question);
             LoadedTests.Add(test);
             
         }

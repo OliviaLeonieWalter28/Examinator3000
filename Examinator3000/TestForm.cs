@@ -29,8 +29,9 @@ namespace Examinator3000
         private void SetQuestion()
         {
             var currentQuestion = Globals.CurrentActiveTest.Questions[0];
-            if (repeaterCounter == 3) 
+            if (repeaterCounter == 3 && Globals.CurrentActiveTest.RepeatQuestions.Count > 2) 
             {
+
                 Random r = new Random();
                 var questionIndex = r.Next(0, Globals.CurrentActiveTest.RepeatQuestions.Count - 1);
                 currentQuestion = Globals.CurrentActiveTest.RepeatQuestions[questionIndex];
@@ -130,10 +131,14 @@ namespace Examinator3000
                     if (allCorrect)
                     {
                         MessageBox.Show("Correct! 🎉");
+                        Globals.CurrentActiveQuestion.SetResult(true);  
+                        Globals.Checked = true; 
                     }
                     else
                     {
                         MessageBox.Show("Some answers were wrong.");
+                        Globals.CurrentActiveQuestion.SetResult(false);
+                        Globals.Checked = true;
                     }
                 }
                 else 
@@ -145,7 +150,10 @@ namespace Examinator3000
             }
             else
             {
+                NextButton.Text = "Check Answer";
                 SetQuestion();
+                Globals.Checked = false;
+
             }
         }
     }
