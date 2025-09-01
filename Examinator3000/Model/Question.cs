@@ -11,6 +11,10 @@ namespace Examinator3000.Model
         public string QuestionText { get; set; }    
         public string QuestionImage { get; set; }
         private bool isPictureQuestion;
+        private int timesRepeated = 0;
+        private int correcltyRepeated = 0;
+
+
 
         public List<Answer> AnswerList;
 
@@ -39,5 +43,32 @@ namespace Examinator3000.Model
         {
             return isPictureQuestion;
         } 
+        public void AddTimesRepeated() 
+        {
+            timesRepeated += 1;
+        }
+        public void AddTimesCorrectlyRepeated()
+        {
+            correcltyRepeated += 1;
+        }
+        public int GetTimesRepeated() 
+        {
+            return timesRepeated;
+        }
+        public int GetTimesCorrectlyRepeated() 
+        {
+            return correcltyRepeated;
+        }
+        public void SetResult(bool answeredCorrectly) 
+        {
+            AddTimesRepeated();
+            if (answeredCorrectly) AddTimesCorrectlyRepeated();
+
+            if (GetTimesRepeated() == 5 && GetTimesCorrectlyRepeated() < 3)
+            {
+                Globals.CurrentActiveTest.WeakQuestions.Add(Globals.CurrentActiveQuestion);
+                Globals.CurrentActiveTest.RepeatQuestions.Remove(this);
+            }
+        }
     }
 }

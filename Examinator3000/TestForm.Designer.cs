@@ -114,8 +114,9 @@
             NextButton.Name = "NextButton";
             NextButton.Size = new Size(174, 65);
             NextButton.TabIndex = 3;
-            NextButton.Text = "Next Question";
+            NextButton.Text = "Check";
             NextButton.UseVisualStyleBackColor = false;
+            NextButton.Click += NextButton_Click;
             // 
             // TestForm
             // 

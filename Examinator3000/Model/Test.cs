@@ -10,9 +10,9 @@ namespace Examinator3000.Model
     {
         public string TestName { get; set; }
         public List<Question> Questions { get; set; } = new List<Question>();
-        public int QuestionsCount { get; set; } = 0;
         public List<Question> ArchivedQuestions { get; set; } = new List<Question>();   
-        public List<Question> WeakQuestions {  get; set; }  = new List<Question>();   
+        public List<Question> WeakQuestions {  get; set; }  = new List<Question>();
+        public List<Question> RepeatQuestions { get; set; } = new List<Question>();
         public int AmountOfTimesRepeated { get; set; } = 0;
         public int ProcentageCorrect { get; set; } = 0;
 

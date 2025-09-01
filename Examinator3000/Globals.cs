@@ -7,10 +7,18 @@ using System.Threading.Tasks;
 
 namespace Examinator3000
 {
+
     static public class Globals
     {
         public static List<Test>LoadedTests = new List<Test>();
+
         public static Test CurrentActiveTest;
+        public static Question CurrentActiveQuestion;
+
+        public static bool Checked;
+        public static bool WasCorrect;
+
+        public static int CurrentTestCorrectAnswers;
 
         public static void AddTest(string testName) 
         {
