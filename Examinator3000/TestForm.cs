@@ -95,20 +95,45 @@ namespace Examinator3000
             if (!Globals.Checked) 
             {
                 NextButton.Text = "Next Question";
-                if(Globals.CurrentActiveQuestion.AnswerList.Count != 1) 
+                if (Globals.CurrentActiveQuestion.AnswerList.Count != 1)
                 {
-                    var correct = false;
-                    Globals.Checked = true;
-                    foreach(var answer in Globals.CurrentActiveQuestion.AnswerList) 
-                    {
-                        if (answer.isCorrectAnswer()) 
-                        {
-                            AnswerFlowLayoutPanel.Controls
-                        }
-                        else 
-                        {
+                    bool allCorrect = true;
 
+                    foreach (CheckBox cb in AnswerFlowLayoutPanel.Controls.OfType<CheckBox>())
+                    {
+                        var answer = (Answer)cb.Tag;  
+
+                        if (answer.isCorrectAnswer())
+                        {
+                            
+                            if (!cb.Checked)
+                            {
+                                allCorrect = false;
+                                cb.BackColor = Color.LightGreen;  
+                            }
+                            else
+                            {
+                                cb.BackColor = Color.LightGreen;  
+                            }
                         }
+                        else
+                        {
+                            
+                            if (cb.Checked)
+                            {
+                                allCorrect = false;
+                                cb.BackColor = Color.IndianRed; 
+                            }
+                        }
+                    }
+
+                    if (allCorrect)
+                    {
+                        MessageBox.Show("Correct! 🎉");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Some answers were wrong.");
                     }
                 }
                 else 
