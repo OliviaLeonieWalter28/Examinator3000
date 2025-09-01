@@ -1,4 +1,5 @@
-﻿using Examinator3000.Model;
+﻿using Examinator3000.Helper;
+using Examinator3000.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -171,9 +172,8 @@ namespace Examinator3000
 
         private void FinishTestButton_Click(object sender, EventArgs e)
         {
-
-
-
+            FileWriter.SaveTests(Globals.LoadedTests);
+            this.Close();
         }
     }
 }

@@ -33,13 +33,13 @@ namespace Examinator3000.Helper
         /// Loads the list of tests from disk.
         /// Returns an empty list if the file doesn’t exist.
         /// </summary>
-        public static List<Test> LoadTests()
+        public static void LoadTests()
         {
             if (!File.Exists(SavePath))
-                return new List<Test>();
+                MessageBox.Show("no savefile found!");
 
             string json = File.ReadAllText(SavePath);
-            return JsonSerializer.Deserialize<List<Test>>(json) ?? new List<Test>();
+            Globals.LoadedTests = JsonSerializer.Deserialize<List<Test>>(json) ?? new List<Test>();
         }
 
     }
