@@ -9,11 +9,13 @@ namespace Examinator3000.Model
 {
     public class Answer
     {
-        private string answerText = String.Empty;
-        private bool isAnswerCorrect;
-        private bool isImageAnswer;
-        private string imagePath = String.Empty;
+        public string answerText {  get; set; } = string.Empty;
 
+        public bool isAnswerCorrect { get; set; }
+        public bool isImageAnswer {  get; set; }    
+        public string imagePath { get; set; } = String.Empty;
+
+        public Answer() { } 
         public Answer(string answerText, bool isAnswerCorrect) 
         {
             this.answerText = answerText;

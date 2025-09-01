@@ -84,7 +84,7 @@
             StartAllQuestionsButton.Name = "StartAllQuestionsButton";
             StartAllQuestionsButton.Size = new Size(236, 118);
             StartAllQuestionsButton.TabIndex = 2;
-            StartAllQuestionsButton.Text = "Start - All Questions";
+            StartAllQuestionsButton.Text = "Start - Questions w/o Archived";
             StartAllQuestionsButton.UseVisualStyleBackColor = false;
             StartAllQuestionsButton.Click += StartAllQuestionsButton_Click;
             // 

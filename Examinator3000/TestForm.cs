@@ -28,8 +28,9 @@ namespace Examinator3000
         }
         private void SetQuestion()
         {
+            QuestionPictureBox.Hide();
             var currentQuestion = Globals.CurrentActiveTest.Questions[0];
-            if (repeaterCounter == 3 && Globals.CurrentActiveTest.RepeatQuestions.Count > 2) 
+            if (repeaterCounter == 3 && Globals.CurrentActiveTest.RepeatQuestions.Count > 1) 
             {
 
                 Random r = new Random();
@@ -38,16 +39,19 @@ namespace Examinator3000
                 repeaterCounter = 1;
             }
             else 
-            {
+            {  
                 currentQuestion = Globals.CurrentActiveTest.Questions[CurrentQuestion];
                 CurrentQuestion += 1;
+                if (Globals.CurrentActiveTest.Questions.Count == CurrentQuestion) Globals.LastQuestion = true;
                 repeaterCounter++;  
             }
                 
             Globals.CurrentActiveQuestion = currentQuestion;
             if (currentQuestion.IsPictureQuestion())
             {
-                QuestionPictureBox.ImageLocation = currentQuestion.QuestionImage;
+                QuestionPictureBox.Show();
+                QuestionPictureBox.ImageLocation = Path.Combine(Application.StartupPath, $"Images/Images{Globals.CurrentActiveTest.TestName}", currentQuestion.QuestionImage);
+                QuestionPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             }
             AboveImageTextQuestionLabel.Text = currentQuestion.QuestionText;
             SetAnswers(currentQuestion);
@@ -95,7 +99,9 @@ namespace Examinator3000
         {
             if (!Globals.Checked) 
             {
-                NextButton.Text = "Next Question";
+                if(Globals.LastQuestion) NextButton.Text = "Finish Test";
+                else NextButton.Text = "Next Question";
+
                 if (Globals.CurrentActiveQuestion.AnswerList.Count != 1)
                 {
                     bool allCorrect = true;
@@ -150,6 +156,14 @@ namespace Examinator3000
             }
             else
             {
+                if (Globals.LastQuestion) 
+                {
+                    var testSummeryForm = new TestSummeryForm();
+                    testSummeryForm.ShowDialog();
+                    this.Close();
+                    return;
+                }
+                
                 NextButton.Text = "Check Answer";
                 SetQuestion();
                 Globals.Checked = false;

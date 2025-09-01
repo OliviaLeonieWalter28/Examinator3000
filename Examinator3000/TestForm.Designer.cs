@@ -61,7 +61,7 @@
             flowLayoutPanel2.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel2.Location = new Point(13, 14);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(1668, 690);
+            flowLayoutPanel2.Size = new Size(1675, 690);
             flowLayoutPanel2.TabIndex = 0;
             // 
             // AboveImageTextQuestionLabel
@@ -78,7 +78,7 @@
             // 
             QuestionPictureBox.Location = new Point(3, 21);
             QuestionPictureBox.Name = "QuestionPictureBox";
-            QuestionPictureBox.Size = new Size(100, 50);
+            QuestionPictureBox.Size = new Size(1669, 644);
             QuestionPictureBox.TabIndex = 1;
             QuestionPictureBox.TabStop = false;
             // 
@@ -87,7 +87,7 @@
             BelowImageTextQuestionLabel.AutoSize = true;
             BelowImageTextQuestionLabel.Font = new Font("Verdana", 12F);
             BelowImageTextQuestionLabel.ForeColor = SystemColors.Control;
-            BelowImageTextQuestionLabel.Location = new Point(3, 74);
+            BelowImageTextQuestionLabel.Location = new Point(3, 668);
             BelowImageTextQuestionLabel.Name = "BelowImageTextQuestionLabel";
             BelowImageTextQuestionLabel.Size = new Size(0, 18);
             BelowImageTextQuestionLabel.TabIndex = 2;

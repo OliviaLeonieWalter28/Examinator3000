@@ -10,13 +10,16 @@ namespace Examinator3000.Model
     {
         public string QuestionText { get; set; }    
         public string QuestionImage { get; set; }
-        private bool isPictureQuestion;
-        private int timesRepeated = 0;
-        private int correcltyRepeated = 0;
+
+        public bool isPictureQuestion { get; set; }
+        public int timesRepeated { get; set; } = 0;
+        public int correcltyRepeated { get; set; } = 0;
 
 
 
-        public List<Answer> AnswerList;
+        public List<Answer> AnswerList { get; set; } = new List<Answer>();
+
+        public Question() { }
 
         public Question(string questionText, string questionImage, List<Answer> answers)
         {
@@ -61,7 +64,12 @@ namespace Examinator3000.Model
         }
         public void SetResult(bool answeredCorrectly) 
         {
+            
             AddTimesRepeated();
+            if(timesRepeated == 1 && answeredCorrectly) 
+            {
+                Globals.CurrentTestCorrectAnswers += 1;
+            }
             if (answeredCorrectly) AddTimesCorrectlyRepeated();
 
             if (GetTimesRepeated() == 5 && GetTimesCorrectlyRepeated() < 3)

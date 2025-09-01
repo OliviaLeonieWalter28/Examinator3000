@@ -35,12 +35,14 @@ namespace Examinator3000.Helper
         /// </summary>
         public static void LoadTests()
         {
-            if (!File.Exists(SavePath))
+            if (!File.Exists(SavePath)) 
+            {
                 MessageBox.Show("no savefile found!");
-
+                return;
+            }
+             
             string json = File.ReadAllText(SavePath);
             Globals.LoadedTests = JsonSerializer.Deserialize<List<Test>>(json) ?? new List<Test>();
-            //a comment
         }
 
     }

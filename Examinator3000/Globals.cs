@@ -16,9 +16,9 @@ namespace Examinator3000
         public static Question CurrentActiveQuestion;
 
         public static bool Checked;
-        public static bool WasCorrect;
 
         public static int CurrentTestCorrectAnswers;
+        public static bool LastQuestion;
 
         public static void AddTest(string testName) 
         {

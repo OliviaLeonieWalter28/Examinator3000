@@ -15,10 +15,12 @@ namespace Examinator3000
         public AnswerForm()
         {
             InitializeComponent();
+            SetAnswer();
         }
         private void SetAnswer() 
         {
             AnswerPictureBox.ImageLocation = Path.Combine(Application.StartupPath, $"Images/Images{Globals.CurrentActiveTest.TestName}", Globals.CurrentActiveQuestion.AnswerList[0].GetImagePath());
+            AnswerPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
         }
         private void CorrectAnswerButton_Click(object sender, EventArgs e)
         {
