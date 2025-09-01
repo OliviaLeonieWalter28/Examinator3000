@@ -17,12 +17,12 @@ namespace Examinator3000.Model
         public Question(string questionText, string questionImage, List<Answer> answers)
         {
             AnswerList = new List<Answer>();
-            QuestionText = questionText;
+            QuestionText = questionText;                                
             
             if (String.IsNullOrWhiteSpace(questionImage)) 
             {
                 isPictureQuestion = false;
-                QuestionImage = string.Empty;
+                QuestionImage = string.Empty;                        
             }
             else 
             {
@@ -34,6 +34,10 @@ namespace Examinator3000.Model
             {
                 AnswerList.Add(answer);
             }
-        }    
+        }
+        public bool IsPictureQuestion()
+        {
+            return isPictureQuestion;
+        } 
     }
 }

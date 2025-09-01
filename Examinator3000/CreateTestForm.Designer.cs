@@ -43,6 +43,8 @@
             panel4 = new Panel();
             IsPictureQuestionCheckBox = new CheckBox();
             panel3 = new Panel();
+            AnswerImagePathTextBox = new TextBox();
+            AnswerImagePathLabel = new Label();
             AddAnswerButton = new Button();
             HasImageAnswerCheckBox = new CheckBox();
             IsCorrectAnswerCheckBox = new CheckBox();
@@ -53,10 +55,10 @@
             ImagePreviewLabel = new Label();
             QuestionsLabel = new Label();
             AnswersLabel = new Label();
-            AnswerImagePathLabel = new Label();
-            AnswerImagePathTextBox = new TextBox();
             ImagePreviewAnswerLabel = new Label();
             pictureBox1 = new PictureBox();
+            DeleteQuestionButton = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)PicturePreviewPictureBox).BeginInit();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -90,6 +92,7 @@
             AddQuestionButton.TabIndex = 2;
             AddQuestionButton.Text = "Add Question";
             AddQuestionButton.UseVisualStyleBackColor = true;
+            AddQuestionButton.Click += AddQuestionButton_Click;
             // 
             // AnswersListBox
             // 
@@ -150,6 +153,7 @@
             ImagePathTextBox.Name = "ImagePathTextBox";
             ImagePathTextBox.Size = new Size(638, 23);
             ImagePathTextBox.TabIndex = 5;
+            ImagePathTextBox.TextChanged += ImagePathTextBox_TextChanged;
             // 
             // ImagePathLabel
             // 
@@ -158,9 +162,9 @@
             ImagePathLabel.ForeColor = SystemColors.Control;
             ImagePathLabel.Location = new Point(11, 344);
             ImagePathLabel.Name = "ImagePathLabel";
-            ImagePathLabel.Size = new Size(88, 16);
+            ImagePathLabel.Size = new Size(94, 16);
             ImagePathLabel.TabIndex = 4;
-            ImagePathLabel.Text = "Image Path:";
+            ImagePathLabel.Text = "Image Name:";
             // 
             // TextAboveImageLabel
             // 
@@ -219,6 +223,24 @@
             panel3.Size = new Size(808, 319);
             panel3.TabIndex = 6;
             // 
+            // AnswerImagePathTextBox
+            // 
+            AnswerImagePathTextBox.Location = new Point(143, 204);
+            AnswerImagePathTextBox.Name = "AnswerImagePathTextBox";
+            AnswerImagePathTextBox.Size = new Size(638, 23);
+            AnswerImagePathTextBox.TabIndex = 6;
+            AnswerImagePathTextBox.TextChanged += AnswerImagePathTextBox_TextChanged;
+            // 
+            // AnswerImagePathLabel
+            // 
+            AnswerImagePathLabel.AutoSize = true;
+            AnswerImagePathLabel.Font = new Font("Verdana", 9.75F);
+            AnswerImagePathLabel.Location = new Point(11, 211);
+            AnswerImagePathLabel.Name = "AnswerImagePathLabel";
+            AnswerImagePathLabel.Size = new Size(94, 16);
+            AnswerImagePathLabel.TabIndex = 5;
+            AnswerImagePathLabel.Text = "Image Name:";
+            // 
             // AddAnswerButton
             // 
             AddAnswerButton.Font = new Font("Verdana", 14.25F);
@@ -228,6 +250,7 @@
             AddAnswerButton.TabIndex = 4;
             AddAnswerButton.Text = "Add Answer";
             AddAnswerButton.UseVisualStyleBackColor = true;
+            AddAnswerButton.Click += AddAnswerButton_Click;
             // 
             // HasImageAnswerCheckBox
             // 
@@ -239,6 +262,7 @@
             HasImageAnswerCheckBox.TabIndex = 3;
             HasImageAnswerCheckBox.Text = "Has Image Answer";
             HasImageAnswerCheckBox.UseVisualStyleBackColor = true;
+            HasImageAnswerCheckBox.CheckedChanged += HasImageAnswerCheckBox_CheckedChanged;
             // 
             // IsCorrectAnswerCheckBox
             // 
@@ -324,23 +348,6 @@
             AnswersLabel.TabIndex = 11;
             AnswersLabel.Text = "Answers";
             // 
-            // AnswerImagePathLabel
-            // 
-            AnswerImagePathLabel.AutoSize = true;
-            AnswerImagePathLabel.Font = new Font("Verdana", 9.75F);
-            AnswerImagePathLabel.Location = new Point(11, 211);
-            AnswerImagePathLabel.Name = "AnswerImagePathLabel";
-            AnswerImagePathLabel.Size = new Size(88, 16);
-            AnswerImagePathLabel.TabIndex = 5;
-            AnswerImagePathLabel.Text = "Image Path:";
-            // 
-            // AnswerImagePathTextBox
-            // 
-            AnswerImagePathTextBox.Location = new Point(143, 204);
-            AnswerImagePathTextBox.Name = "AnswerImagePathTextBox";
-            AnswerImagePathTextBox.Size = new Size(638, 23);
-            AnswerImagePathTextBox.TabIndex = 6;
-            // 
             // ImagePreviewAnswerLabel
             // 
             ImagePreviewAnswerLabel.AutoSize = true;
@@ -360,12 +367,37 @@
             pictureBox1.TabIndex = 13;
             pictureBox1.TabStop = false;
             // 
+            // DeleteQuestionButton
+            // 
+            DeleteQuestionButton.BackColor = Color.White;
+            DeleteQuestionButton.Font = new Font("Verdana", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            DeleteQuestionButton.ForeColor = Color.Red;
+            DeleteQuestionButton.Location = new Point(1597, 16);
+            DeleteQuestionButton.Name = "DeleteQuestionButton";
+            DeleteQuestionButton.Size = new Size(102, 38);
+            DeleteQuestionButton.TabIndex = 14;
+            DeleteQuestionButton.Text = "Delete Question";
+            DeleteQuestionButton.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            button1.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.Red;
+            button1.Location = new Point(1248, 957);
+            button1.Name = "button1";
+            button1.Size = new Size(136, 27);
+            button1.TabIndex = 7;
+            button1.Text = "Delete Answer";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // CreateTestForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(13, 59, 76);
             ClientSize = new Size(1711, 1006);
+            Controls.Add(button1);
+            Controls.Add(DeleteQuestionButton);
             Controls.Add(pictureBox1);
             Controls.Add(ImagePreviewAnswerLabel);
             Controls.Add(AnswersLabel);
@@ -423,5 +455,7 @@
         private Label AnswerImagePathLabel;
         private Label ImagePreviewAnswerLabel;
         private PictureBox pictureBox1;
+        private Button DeleteQuestionButton;
+        private Button button1;
     }
 }

@@ -9,13 +9,34 @@ namespace Examinator3000
 {
     static public class Globals
     {
-        static List<Test>LoadedTests = new List<Test>();
-        static Test currentActiveTest;
+        public static List<Test>LoadedTests = new List<Test>();
+        public static Test CurrentActiveTest;
 
         public static void AddTest(string testName) 
         {
-            currentActiveTest = new Test(testName);
-            LoadedTests.Add(currentActiveTest);
+            CurrentActiveTest = new Test(testName);
+            LoadedTests.Add(CurrentActiveTest);
+        }
+
+        //DEBUG
+        public static void AddTestTest() 
+        {
+            var answer = new Answer("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", false);
+            var answer2 = new Answer("Answer2",true);
+            var answer3= new Answer("Answer3",false);
+            var answer4 = new Answer("Answer4",false);
+
+            var answers = new List<Answer>();
+            answers.Add(answer);
+            answers.Add(answer2);   
+            answers.Add(answer3);   
+            answers.Add(answer4);
+
+            var question = new Question("This is a Test Question", null, answers);
+            var test = new Test("AZ-204");
+            test.AddNewQuestion(question);  
+            LoadedTests.Add(test);
+            
         }
     }
 }

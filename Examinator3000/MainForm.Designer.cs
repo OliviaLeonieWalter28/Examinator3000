@@ -41,6 +41,13 @@
             AmountOfRepetitionsLabel = new Label();
             AmountOfArchivedQuestionsLabel = new Label();
             panel1 = new Panel();
+            SelectedAmountOfWeakQuestions = new Label();
+            AmountOfWeakQuestionsLabel = new Label();
+            SelectedAmountOfArchivedQuestions = new Label();
+            SelectedAmountOfRepetition = new Label();
+            SelectedCorrectPercentage = new Label();
+            SelectedAmountOfQuestions = new Label();
+            SelectedTestName = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -52,6 +59,7 @@
             TestsListBox.Name = "TestsListBox";
             TestsListBox.Size = new Size(499, 709);
             TestsListBox.TabIndex = 0;
+            TestsListBox.SelectedIndexChanged += TestsListBox_SelectedIndexChanged;
             // 
             // CreateNewTestButton
             // 
@@ -78,6 +86,7 @@
             StartAllQuestionsButton.TabIndex = 2;
             StartAllQuestionsButton.Text = "Start - All Questions";
             StartAllQuestionsButton.UseVisualStyleBackColor = false;
+            StartAllQuestionsButton.Click += StartAllQuestionsButton_Click;
             // 
             // TestNameLabel
             // 
@@ -178,6 +187,13 @@
             panel1.BackColor = Color.FromArgb(0, 64, 90);
             panel1.BackgroundImageLayout = ImageLayout.Center;
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(SelectedAmountOfWeakQuestions);
+            panel1.Controls.Add(AmountOfWeakQuestionsLabel);
+            panel1.Controls.Add(SelectedAmountOfArchivedQuestions);
+            panel1.Controls.Add(SelectedAmountOfRepetition);
+            panel1.Controls.Add(SelectedCorrectPercentage);
+            panel1.Controls.Add(SelectedAmountOfQuestions);
+            panel1.Controls.Add(SelectedTestName);
             panel1.Controls.Add(AmountOfArchivedQuestionsLabel);
             panel1.Controls.Add(TestNameLabel);
             panel1.Controls.Add(AmountOfRepetitionsLabel);
@@ -187,6 +203,77 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1019, 709);
             panel1.TabIndex = 1;
+            // 
+            // SelectedAmountOfWeakQuestions
+            // 
+            SelectedAmountOfWeakQuestions.AutoSize = true;
+            SelectedAmountOfWeakQuestions.Font = new Font("Verdana", 15.75F);
+            SelectedAmountOfWeakQuestions.ForeColor = SystemColors.Control;
+            SelectedAmountOfWeakQuestions.Location = new Point(344, 528);
+            SelectedAmountOfWeakQuestions.Name = "SelectedAmountOfWeakQuestions";
+            SelectedAmountOfWeakQuestions.Size = new Size(0, 25);
+            SelectedAmountOfWeakQuestions.TabIndex = 17;
+            // 
+            // AmountOfWeakQuestionsLabel
+            // 
+            AmountOfWeakQuestionsLabel.AutoSize = true;
+            AmountOfWeakQuestionsLabel.Font = new Font("Verdana", 15.75F);
+            AmountOfWeakQuestionsLabel.ForeColor = SystemColors.Control;
+            AmountOfWeakQuestionsLabel.Location = new Point(31, 528);
+            AmountOfWeakQuestionsLabel.Name = "AmountOfWeakQuestionsLabel";
+            AmountOfWeakQuestionsLabel.Size = new Size(307, 25);
+            AmountOfWeakQuestionsLabel.TabIndex = 16;
+            AmountOfWeakQuestionsLabel.Text = "Amount of Weak Questions:";
+            // 
+            // SelectedAmountOfArchivedQuestions
+            // 
+            SelectedAmountOfArchivedQuestions.AutoSize = true;
+            SelectedAmountOfArchivedQuestions.Font = new Font("Verdana", 15.75F);
+            SelectedAmountOfArchivedQuestions.ForeColor = SystemColors.Control;
+            SelectedAmountOfArchivedQuestions.Location = new Point(377, 447);
+            SelectedAmountOfArchivedQuestions.Name = "SelectedAmountOfArchivedQuestions";
+            SelectedAmountOfArchivedQuestions.Size = new Size(0, 25);
+            SelectedAmountOfArchivedQuestions.TabIndex = 15;
+            // 
+            // SelectedAmountOfRepetition
+            // 
+            SelectedAmountOfRepetition.AutoSize = true;
+            SelectedAmountOfRepetition.Font = new Font("Verdana", 15.75F);
+            SelectedAmountOfRepetition.ForeColor = SystemColors.Control;
+            SelectedAmountOfRepetition.Location = new Point(295, 355);
+            SelectedAmountOfRepetition.Name = "SelectedAmountOfRepetition";
+            SelectedAmountOfRepetition.Size = new Size(0, 25);
+            SelectedAmountOfRepetition.TabIndex = 14;
+            // 
+            // SelectedCorrectPercentage
+            // 
+            SelectedCorrectPercentage.AutoSize = true;
+            SelectedCorrectPercentage.Font = new Font("Verdana", 15.75F);
+            SelectedCorrectPercentage.ForeColor = SystemColors.Control;
+            SelectedCorrectPercentage.Location = new Point(262, 261);
+            SelectedCorrectPercentage.Name = "SelectedCorrectPercentage";
+            SelectedCorrectPercentage.Size = new Size(0, 25);
+            SelectedCorrectPercentage.TabIndex = 13;
+            // 
+            // SelectedAmountOfQuestions
+            // 
+            SelectedAmountOfQuestions.AutoSize = true;
+            SelectedAmountOfQuestions.Font = new Font("Verdana", 15.75F);
+            SelectedAmountOfQuestions.ForeColor = SystemColors.Control;
+            SelectedAmountOfQuestions.Location = new Point(279, 169);
+            SelectedAmountOfQuestions.Name = "SelectedAmountOfQuestions";
+            SelectedAmountOfQuestions.Size = new Size(0, 25);
+            SelectedAmountOfQuestions.TabIndex = 12;
+            // 
+            // SelectedTestName
+            // 
+            SelectedTestName.AutoSize = true;
+            SelectedTestName.Font = new Font("Verdana", 15.75F);
+            SelectedTestName.ForeColor = SystemColors.Control;
+            SelectedTestName.Location = new Point(159, 85);
+            SelectedTestName.Name = "SelectedTestName";
+            SelectedTestName.Size = new Size(0, 25);
+            SelectedTestName.TabIndex = 11;
             // 
             // Examinator3000Main
             // 
@@ -223,5 +310,12 @@
         private Label AmountOfRepetitionsLabel;
         private Label AmountOfArchivedQuestionsLabel;
         private Panel panel1;
+        private Label SelectedAmountOfArchivedQuestions;
+        private Label SelectedAmountOfRepetition;
+        private Label SelectedCorrectPercentage;
+        private Label SelectedAmountOfQuestions;
+        private Label SelectedTestName;
+        private Label AmountOfWeakQuestionsLabel;
+        private Label SelectedAmountOfWeakQuestions;
     }
 }

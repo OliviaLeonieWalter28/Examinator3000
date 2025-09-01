@@ -27,6 +27,18 @@ namespace Examinator3000.Model
             this.isImageAnswer = true;
             this.imagePath = imagePath;
         }
+        public bool isCorrectAnswer() 
+        {
+            return isAnswerCorrect; 
+        }
+        public string GetAnswerText() 
+        {
+            return answerText;
+        }
+        public string GetImagePath() 
+        {
+            return imagePath;   
+        }
 
     }
 }

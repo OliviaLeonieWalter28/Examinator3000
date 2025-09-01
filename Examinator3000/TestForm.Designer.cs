@@ -30,15 +30,15 @@
         {
             pageSetupDialog1 = new PageSetupDialog();
             panel2 = new Panel();
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            AboveImageTextQuestionLabel = new Label();
             flowLayoutPanel2 = new FlowLayoutPanel();
-            pictureBox1 = new PictureBox();
+            AboveImageTextQuestionLabel = new Label();
+            QuestionPictureBox = new PictureBox();
             BelowImageTextQuestionLabel = new Label();
+            AnswerFlowLayoutPanel = new FlowLayoutPanel();
             NextButton = new Button();
             panel2.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)QuestionPictureBox).BeginInit();
             SuspendLayout();
             // 
             // panel2
@@ -50,13 +50,19 @@
             panel2.Size = new Size(1700, 717);
             panel2.TabIndex = 1;
             // 
-            // flowLayoutPanel1
+            // flowLayoutPanel2
             // 
-            flowLayoutPanel1.BackColor = Color.FromArgb(225, 137, 59);
-            flowLayoutPanel1.Location = new Point(40, 788);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(1698, 199);
-            flowLayoutPanel1.TabIndex = 2;
+            flowLayoutPanel2.AutoScroll = true;
+            flowLayoutPanel2.AutoSize = true;
+            flowLayoutPanel2.BackColor = Color.FromArgb(0, 64, 90);
+            flowLayoutPanel2.Controls.Add(AboveImageTextQuestionLabel);
+            flowLayoutPanel2.Controls.Add(QuestionPictureBox);
+            flowLayoutPanel2.Controls.Add(BelowImageTextQuestionLabel);
+            flowLayoutPanel2.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanel2.Location = new Point(13, 14);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new Size(1668, 690);
+            flowLayoutPanel2.TabIndex = 0;
             // 
             // AboveImageTextQuestionLabel
             // 
@@ -65,29 +71,16 @@
             AboveImageTextQuestionLabel.ForeColor = SystemColors.Control;
             AboveImageTextQuestionLabel.Location = new Point(3, 0);
             AboveImageTextQuestionLabel.Name = "AboveImageTextQuestionLabel";
-            AboveImageTextQuestionLabel.Size = new Size(58, 18);
+            AboveImageTextQuestionLabel.Size = new Size(0, 18);
             AboveImageTextQuestionLabel.TabIndex = 0;
-            AboveImageTextQuestionLabel.Text = "label1";
             // 
-            // flowLayoutPanel2
+            // QuestionPictureBox
             // 
-            flowLayoutPanel2.BackColor = Color.FromArgb(0, 64, 90);
-            flowLayoutPanel2.Controls.Add(AboveImageTextQuestionLabel);
-            flowLayoutPanel2.Controls.Add(pictureBox1);
-            flowLayoutPanel2.Controls.Add(BelowImageTextQuestionLabel);
-            flowLayoutPanel2.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel2.Location = new Point(13, 14);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(1668, 690);
-            flowLayoutPanel2.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Location = new Point(3, 21);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(100, 50);
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
+            QuestionPictureBox.Location = new Point(3, 21);
+            QuestionPictureBox.Name = "QuestionPictureBox";
+            QuestionPictureBox.Size = new Size(100, 50);
+            QuestionPictureBox.TabIndex = 1;
+            QuestionPictureBox.TabStop = false;
             // 
             // BelowImageTextQuestionLabel
             // 
@@ -96,9 +89,20 @@
             BelowImageTextQuestionLabel.ForeColor = SystemColors.Control;
             BelowImageTextQuestionLabel.Location = new Point(3, 74);
             BelowImageTextQuestionLabel.Name = "BelowImageTextQuestionLabel";
-            BelowImageTextQuestionLabel.Size = new Size(58, 18);
+            BelowImageTextQuestionLabel.Size = new Size(0, 18);
             BelowImageTextQuestionLabel.TabIndex = 2;
-            BelowImageTextQuestionLabel.Text = "label1";
+            // 
+            // AnswerFlowLayoutPanel
+            // 
+            AnswerFlowLayoutPanel.AutoScroll = true;
+            AnswerFlowLayoutPanel.AutoSize = true;
+            AnswerFlowLayoutPanel.BackColor = Color.FromArgb(225, 137, 59);
+            AnswerFlowLayoutPanel.FlowDirection = FlowDirection.TopDown;
+            AnswerFlowLayoutPanel.Location = new Point(40, 788);
+            AnswerFlowLayoutPanel.Name = "AnswerFlowLayoutPanel";
+            AnswerFlowLayoutPanel.Size = new Size(1698, 199);
+            AnswerFlowLayoutPanel.TabIndex = 2;
+            AnswerFlowLayoutPanel.Paint += flowLayoutPanel1_Paint;
             // 
             // NextButton
             // 
@@ -120,24 +124,26 @@
             BackColor = Color.FromArgb(13, 59, 76);
             ClientSize = new Size(1778, 1089);
             Controls.Add(NextButton);
-            Controls.Add(flowLayoutPanel1);
+            Controls.Add(AnswerFlowLayoutPanel);
             Controls.Add(panel2);
             Name = "TestForm";
             Text = "TestForm";
             panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             flowLayoutPanel2.ResumeLayout(false);
             flowLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)QuestionPictureBox).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
         private PageSetupDialog pageSetupDialog1;
         private Panel panel2;
         private Label AboveImageTextQuestionLabel;
-        private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel AnswerFlowLayoutPanel;
         private FlowLayoutPanel flowLayoutPanel2;
-        private PictureBox pictureBox1;
+        private PictureBox QuestionPictureBox;
         private Label BelowImageTextQuestionLabel;
         private Button NextButton;
     }

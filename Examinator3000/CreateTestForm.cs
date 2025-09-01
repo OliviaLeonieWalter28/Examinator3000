@@ -13,11 +13,15 @@ namespace Examinator3000
 {
     public partial class CreateTestForm : Form
     {
-        private List<Answer> answerList;    
+        private List<Answer> answerList = new List<Answer>();
         public CreateTestForm()
         {
             InitializeComponent();
             QuestionTypeSet();
+            AnswerTypeSet();
+            // 04:50
+
+            //PicturePreviewPictureBox.ImageLocation = "/Images/test1.png";
         }
 
         private void IsPictureQuestionCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -50,33 +54,119 @@ namespace Examinator3000
                 TextBelowImageRichTextBox.Clear();
             }
         }
-        private void SendQuestion()
+        private void AnswerTypeSet()
         {
-            if (IsPictureQuestionCheckBox.Checked)
+            if (HasImageAnswerCheckBox.Checked)
             {
-                
+                AnswerImagePathLabel.Visible = true;
+                AnswerImagePathTextBox.Visible = true;
             }
             else
             {
-
+                AnswerImagePathLabel.Visible = false;
+                AnswerImagePathTextBox.Visible = false;
+                AnswerImagePathTextBox.Clear();
             }
         }
-        private void AddNewAnswer() 
+        private bool SendQuestion()
         {
-            if (HasImageAnswerCheckBox.Checked) 
+            if (IsPictureQuestionCheckBox.Checked)
             {
-                if(String.IsNullOrWhiteSpace(ImagePathTextBox.Text)) 
+                if (!String.IsNullOrWhiteSpace(ImagePathTextBox.Text))
                 {
-                    answerList.Add(new Answer(true, ImagePathTextBox.Text));
+                    if (answerList.Count() != 0)
+                    {
+                        foreach (var answer in answerList)
+                        {
+                            if (answer.isCorrectAnswer())
+                            {
+                                Question question = new Question(TextAboveImageRichTextBox.Text, ImagePathTextBox.Text, answerList);
+                                Globals.CurrentActiveTest.AddNewQuestion(question);
+                                QuestionsListBox.Items.Add($"Question {Globals.CurrentActiveTest.Questions.Count()}: {question.QuestionImage}");
+
+                                return true;
+                            }
+                        }
+                    }
                 }
             }
-            else 
+            else
             {
-                if (String.IsNullOrWhiteSpace(AnswerTextRichTextBox.Text)) 
+                if (!String.IsNullOrWhiteSpace(TextAboveImageRichTextBox.Text))
                 {
-                    answerList.Add(new Answer(AnswerTextRichTextBox.Text, IsCorrectAnswerCheckBox.Checked));
+                    if (answerList.Count() != 0)
+                    {
+                        foreach (var answer in answerList)
+                        {
+                            if (answer.isCorrectAnswer())
+                            {
+                                Question question = new Question(TextAboveImageRichTextBox.Text, null, answerList);
+                                Globals.CurrentActiveTest.AddNewQuestion(question);
+                                QuestionsListBox.Items.Add($"Question {Globals.CurrentActiveTest.Questions.Count()}: {question.QuestionText}");
+                                return true;
+
+                            }
+                        }
+                    }
                 }
             }
+            return false;
+        }
+        private void AddNewAnswer()
+        {
+            if (HasImageAnswerCheckBox.Checked)
+            {
+                if (!String.IsNullOrWhiteSpace(AnswerImagePathTextBox.Text))
+                {
+                    var answer = new Answer(true, AnswerImagePathTextBox.Text);
+                    answerList.Add(answer);
+                    AnswersListBox.Items.Add($"Answer {answerList.Count}: {answer.GetImagePath()}\t Correct Answer: {answer.isCorrectAnswer()}");
+                }
+            }
+            else
+            {
+                if (!String.IsNullOrWhiteSpace(AnswerTextRichTextBox.Text))
+                {
+                    var answer = new Answer(AnswerTextRichTextBox.Text, IsCorrectAnswerCheckBox.Checked);
+                    answerList.Add(answer);
+                    AnswersListBox.Items.Add(answer);
+                    AnswersListBox.Items.Add($"Answer {answerList.Count}: {answer.GetAnswerText()}\t Correct Answer: {answer.isCorrectAnswer()}");
+                }
+            }
+        }
+
+        private void AddAnswerButton_Click(object sender, EventArgs e)
+        {
+            AddNewAnswer();
+        }
+
+        private void AddQuestionButton_Click(object sender, EventArgs e)
+        {
+            bool success = SendQuestion();
+            if (success)
+            {
+                answerList.Clear();
+                AnswersListBox.Items.Clear();
+            }
+        }
+
+        private void ImagePathTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string imagePath = Path.Combine(Application.StartupPath, $"Images/Images{Globals.CurrentActiveTest.TestName}", ImagePathTextBox.Text);
+            PicturePreviewPictureBox.ImageLocation = imagePath;
+            PicturePreviewPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+        }
+
+        private void AnswerImagePathTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string imagePath = Path.Combine(Application.StartupPath, $"Images/Images{Globals.CurrentActiveTest.TestName}", ImagePathTextBox.Text);
+            PicturePreviewPictureBox.ImageLocation = imagePath;
+            PicturePreviewPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+        }
+
+        private void HasImageAnswerCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            AnswerTypeSet();
         }
     }
 }

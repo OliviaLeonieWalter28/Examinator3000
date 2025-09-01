@@ -21,7 +21,31 @@ namespace Examinator3000
         {
             if (!String.IsNullOrWhiteSpace(TestNameTextBox.Text)) 
             {
+                foreach(var test in Globals.LoadedTests) 
+                {
+                    if(test.TestName == TestNameTextBox.Text) 
+                    {
+                        MessageBox.Show("A Test with this name already exists, please choose another name!");
+                        break;
+                    }
+                }
+
+
+
                 Globals.AddTest(TestNameTextBox.Text);
+                string imagesRoot = Path.Combine(Application.StartupPath, "Images");
+                string testImagesFolder = Path.Combine(imagesRoot, $"Images{TestNameTextBox.Text}");
+
+                if (!Directory.Exists(imagesRoot))
+                {
+                    Directory.CreateDirectory(imagesRoot);
+                }
+                if (!Directory.Exists(testImagesFolder))
+                {
+                    Directory.CreateDirectory(testImagesFolder);
+                }
+
+
                 CreateTestForm createTestForm = new CreateTestForm();
                 createTestForm.ShowDialog();
                 this.Close();
