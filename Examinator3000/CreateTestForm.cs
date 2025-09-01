@@ -168,5 +168,12 @@ namespace Examinator3000
         {
             AnswerTypeSet();
         }
+
+        private void FinishTestButton_Click(object sender, EventArgs e)
+        {
+
+
+
+        }
     }
 }

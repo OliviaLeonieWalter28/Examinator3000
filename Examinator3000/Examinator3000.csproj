@@ -9,11 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MaterialSkin" Version="0.2.1" />
+    <Compile Remove="SaveFiles\**" />
+    <EmbeddedResource Remove="SaveFiles\**" />
+    <None Remove="SaveFiles\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="SaveFiles\" />
+    <PackageReference Include="MaterialSkin" Version="0.2.1" />
   </ItemGroup>
 
   <ItemGroup>

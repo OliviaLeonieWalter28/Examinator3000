@@ -1,3 +1,5 @@
+using Examinator3000.Helper;
+
 namespace Examinator3000
 {
     public partial class Examinator3000Main : Form
@@ -6,6 +8,7 @@ namespace Examinator3000
         {
             InitializeComponent();
             Globals.AddTestTest();
+            FileWriter.LoadTests();
             foreach (var test in Globals.LoadedTests)
             {
                 TestsListBox.Items.Add(test.TestName);

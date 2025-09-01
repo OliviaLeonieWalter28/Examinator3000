@@ -59,6 +59,7 @@
             pictureBox1 = new PictureBox();
             DeleteQuestionButton = new Button();
             button1 = new Button();
+            FinishTestButton = new Button();
             ((System.ComponentModel.ISupportInitialize)PicturePreviewPictureBox).BeginInit();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -71,7 +72,7 @@
             QuestionsListBox.ItemHeight = 15;
             QuestionsListBox.Location = new Point(1471, 60);
             QuestionsListBox.Name = "QuestionsListBox";
-            QuestionsListBox.Size = new Size(228, 859);
+            QuestionsListBox.Size = new Size(228, 814);
             QuestionsListBox.TabIndex = 0;
             // 
             // panel1
@@ -86,9 +87,9 @@
             // AddQuestionButton
             // 
             AddQuestionButton.Font = new Font("Verdana", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            AddQuestionButton.Location = new Point(1471, 936);
+            AddQuestionButton.Location = new Point(1471, 880);
             AddQuestionButton.Name = "AddQuestionButton";
-            AddQuestionButton.Size = new Size(228, 58);
+            AddQuestionButton.Size = new Size(228, 71);
             AddQuestionButton.TabIndex = 2;
             AddQuestionButton.Text = "Add Question";
             AddQuestionButton.UseVisualStyleBackColor = true;
@@ -390,12 +391,24 @@
             button1.Text = "Delete Answer";
             button1.UseVisualStyleBackColor = true;
             // 
+            // FinishTestButton
+            // 
+            FinishTestButton.Font = new Font("Verdana", 14.25F);
+            FinishTestButton.Location = new Point(1471, 957);
+            FinishTestButton.Name = "FinishTestButton";
+            FinishTestButton.Size = new Size(228, 37);
+            FinishTestButton.TabIndex = 15;
+            FinishTestButton.Text = "Finish Test";
+            FinishTestButton.UseVisualStyleBackColor = true;
+            FinishTestButton.Click += FinishTestButton_Click;
+            // 
             // CreateTestForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(13, 59, 76);
             ClientSize = new Size(1711, 1006);
+            Controls.Add(FinishTestButton);
             Controls.Add(button1);
             Controls.Add(DeleteQuestionButton);
             Controls.Add(pictureBox1);
@@ -457,5 +470,6 @@
         private PictureBox pictureBox1;
         private Button DeleteQuestionButton;
         private Button button1;
+        private Button FinishTestButton;
     }
 }
