@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Examinator3000.Helper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,7 +18,8 @@ namespace Examinator3000
             InitializeComponent();
             SetLabels();
             ResetValues();
-            Examinator3000Main.Instance.ReloadTests();
+            FileWriter.SaveTests(Globals.LoadedTests);
+            //Examinator3000Main.Instance.ReloadTests();
         }
         private void SetLabels() 
         {
@@ -25,9 +27,7 @@ namespace Examinator3000
             QuestionsCorrectDataLabel.Text = Globals.CurrentTestCorrectAnswers.ToString();  
             IncorrectQuestionsDataLabel.Text = (Globals.CurrentActiveTest.Questions.Count - Globals.CurrentTestCorrectAnswers).ToString();
             CorrectPercentageDataLabel.Text = $"{Globals.CurrentActiveTest.CalculatePercentage()}%";
-            AmountOfWeakQuestionsDataLabel.Text = Globals.CurrentActiveTest.WeakQuestions.Count.ToString();
-    
-            
+            AmountOfWeakQuestionsDataLabel.Text = Globals.CurrentActiveTest.WeakQuestions.Count.ToString();  
         }
         private void BackToMainButton_Click(object sender, EventArgs e)
         {

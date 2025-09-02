@@ -1,6 +1,7 @@
 ﻿using Examinator3000.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace Examinator3000
     static public class Globals
     {
         public static List<Test>LoadedTests = new List<Test>();
+        public static BindingList<Test> LoadedTestsBind = new BindingList<Test>();
 
         public static Test CurrentActiveTest;
         public static Question CurrentActiveQuestion;
@@ -24,6 +26,7 @@ namespace Examinator3000
         {
             CurrentActiveTest = new Test(testName);
             LoadedTests.Add(CurrentActiveTest);
+            LoadedTestsBind.Add(CurrentActiveTest);
         }
 
         //DEBUG
@@ -56,6 +59,7 @@ namespace Examinator3000
             question.QuestionText = "This is a Test Question 3.0";
             test.AddNewQuestion(question);
             LoadedTests.Add(test);
+            LoadedTestsBind.Add(test);  
             
         }
     }

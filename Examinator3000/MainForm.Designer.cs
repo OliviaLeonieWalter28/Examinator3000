@@ -48,6 +48,7 @@
             SelectedCorrectPercentage = new Label();
             SelectedAmountOfQuestions = new Label();
             SelectedTestName = new Label();
+            EditTestButton = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -66,9 +67,9 @@
             CreateNewTestButton.BackColor = Color.FromArgb(225, 137, 59);
             CreateNewTestButton.FlatStyle = FlatStyle.Popup;
             CreateNewTestButton.Font = new Font("Verdana", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            CreateNewTestButton.Location = new Point(42, 818);
+            CreateNewTestButton.Location = new Point(42, 800);
             CreateNewTestButton.Name = "CreateNewTestButton";
-            CreateNewTestButton.Size = new Size(499, 118);
+            CreateNewTestButton.Size = new Size(499, 64);
             CreateNewTestButton.TabIndex = 1;
             CreateNewTestButton.Text = "Create New Test";
             CreateNewTestButton.UseVisualStyleBackColor = false;
@@ -275,12 +276,26 @@
             SelectedTestName.Size = new Size(0, 25);
             SelectedTestName.TabIndex = 11;
             // 
+            // EditTestButton
+            // 
+            EditTestButton.BackColor = Color.White;
+            EditTestButton.FlatStyle = FlatStyle.Popup;
+            EditTestButton.Font = new Font("Verdana", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            EditTestButton.Location = new Point(42, 872);
+            EditTestButton.Name = "EditTestButton";
+            EditTestButton.Size = new Size(499, 64);
+            EditTestButton.TabIndex = 7;
+            EditTestButton.Text = "Edit Test";
+            EditTestButton.UseVisualStyleBackColor = false;
+            EditTestButton.Click += EditTestButton_Click;
+            // 
             // Examinator3000Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(13, 59, 76);
             ClientSize = new Size(1822, 971);
+            Controls.Add(EditTestButton);
             Controls.Add(panel1);
             Controls.Add(StartMixedQuestionsButton);
             Controls.Add(StartWeakQuestionsButton);
@@ -317,5 +332,6 @@
         private Label SelectedTestName;
         private Label AmountOfWeakQuestionsLabel;
         private Label SelectedAmountOfWeakQuestions;
+        private Button EditTestButton;
     }
 }

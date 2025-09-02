@@ -63,18 +63,21 @@ namespace Examinator3000.Model
             return correcltyRepeated;
         }
         public void SetResult(bool answeredCorrectly) 
-        {
-            
+        {     
             AddTimesRepeated();
-            if(timesRepeated == 1 && answeredCorrectly) 
+            if(timesRepeated == 1) 
             {
-                Globals.CurrentTestCorrectAnswers += 1;
+                if(answeredCorrectly) Globals.CurrentTestCorrectAnswers += 1;
+                Globals.CurrentActiveTest.RepeatQuestions.Add(this);
             }
             if (answeredCorrectly) AddTimesCorrectlyRepeated();
 
-            if (GetTimesRepeated() == 5 && GetTimesCorrectlyRepeated() < 3)
-            {
-                Globals.CurrentActiveTest.WeakQuestions.Add(Globals.CurrentActiveQuestion);
+            if (GetTimesRepeated() == 5)
+            {   
+                if(GetTimesCorrectlyRepeated() < 3)
+                {
+                    Globals.CurrentActiveTest.WeakQuestions.Add(Globals.CurrentActiveQuestion); 
+                }
                 Globals.CurrentActiveTest.RepeatQuestions.Remove(this);
             }
         }

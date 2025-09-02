@@ -21,11 +21,6 @@ namespace Examinator3000
             InitializeComponent();
             SetQuestion();
         }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
         private void SetQuestion()
         {
             QuestionPictureBox.Hide();

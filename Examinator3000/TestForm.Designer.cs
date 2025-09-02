@@ -102,7 +102,6 @@
             AnswerFlowLayoutPanel.Name = "AnswerFlowLayoutPanel";
             AnswerFlowLayoutPanel.Size = new Size(1698, 199);
             AnswerFlowLayoutPanel.TabIndex = 2;
-            AnswerFlowLayoutPanel.Paint += flowLayoutPanel1_Paint;
             // 
             // NextButton
             // 

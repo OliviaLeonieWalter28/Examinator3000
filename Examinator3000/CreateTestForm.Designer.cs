@@ -34,8 +34,6 @@
             AnswersListBox = new ListBox();
             PicturePreviewPictureBox = new PictureBox();
             panel2 = new Panel();
-            TextBelowImageRichTextBox = new RichTextBox();
-            TextBelowImageLabel = new Label();
             ImagePathTextBox = new TextBox();
             ImagePathLabel = new Label();
             TextAboveImageLabel = new Label();
@@ -56,14 +54,16 @@
             QuestionsLabel = new Label();
             AnswersLabel = new Label();
             ImagePreviewAnswerLabel = new Label();
-            pictureBox1 = new PictureBox();
+            AnswerPictureBox = new PictureBox();
             DeleteQuestionButton = new Button();
-            button1 = new Button();
+            DeleteAnswerButton = new Button();
             FinishTestButton = new Button();
+            EditAnswerButton = new Button();
+            EditQuestionButton = new Button();
             ((System.ComponentModel.ISupportInitialize)PicturePreviewPictureBox).BeginInit();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)AnswerPictureBox).BeginInit();
             SuspendLayout();
             // 
             // QuestionsListBox
@@ -116,8 +116,6 @@
             // 
             panel2.BackColor = Color.FromArgb(0, 64, 90);
             panel2.BorderStyle = BorderStyle.Fixed3D;
-            panel2.Controls.Add(TextBelowImageRichTextBox);
-            panel2.Controls.Add(TextBelowImageLabel);
             panel2.Controls.Add(ImagePathTextBox);
             panel2.Controls.Add(ImagePathLabel);
             panel2.Controls.Add(TextAboveImageLabel);
@@ -128,25 +126,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(808, 553);
             panel2.TabIndex = 5;
-            // 
-            // TextBelowImageRichTextBox
-            // 
-            TextBelowImageRichTextBox.Location = new Point(143, 373);
-            TextBelowImageRichTextBox.Name = "TextBelowImageRichTextBox";
-            TextBelowImageRichTextBox.Size = new Size(638, 153);
-            TextBelowImageRichTextBox.TabIndex = 7;
-            TextBelowImageRichTextBox.Text = "";
-            // 
-            // TextBelowImageLabel
-            // 
-            TextBelowImageLabel.AutoSize = true;
-            TextBelowImageLabel.Font = new Font("Verdana", 9.75F);
-            TextBelowImageLabel.ForeColor = SystemColors.Control;
-            TextBelowImageLabel.Location = new Point(11, 373);
-            TextBelowImageLabel.Name = "TextBelowImageLabel";
-            TextBelowImageLabel.Size = new Size(130, 16);
-            TextBelowImageLabel.TabIndex = 6;
-            TextBelowImageLabel.Text = "Text Below Image:";
             // 
             // ImagePathTextBox
             // 
@@ -360,36 +339,40 @@
             ImagePreviewAnswerLabel.TabIndex = 12;
             ImagePreviewAnswerLabel.Text = "Image Preview - Answer";
             // 
-            // pictureBox1
+            // AnswerPictureBox
             // 
-            pictureBox1.Location = new Point(854, 369);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(530, 241);
-            pictureBox1.TabIndex = 13;
-            pictureBox1.TabStop = false;
+            AnswerPictureBox.Location = new Point(854, 369);
+            AnswerPictureBox.Name = "AnswerPictureBox";
+            AnswerPictureBox.Size = new Size(530, 241);
+            AnswerPictureBox.TabIndex = 13;
+            AnswerPictureBox.TabStop = false;
             // 
             // DeleteQuestionButton
             // 
             DeleteQuestionButton.BackColor = Color.White;
-            DeleteQuestionButton.Font = new Font("Verdana", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            DeleteQuestionButton.Font = new Font("Verdana", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             DeleteQuestionButton.ForeColor = Color.Red;
-            DeleteQuestionButton.Location = new Point(1597, 16);
+            DeleteQuestionButton.Location = new Point(1655, 16);
+            DeleteQuestionButton.Margin = new Padding(0);
             DeleteQuestionButton.Name = "DeleteQuestionButton";
-            DeleteQuestionButton.Size = new Size(102, 38);
+            DeleteQuestionButton.Size = new Size(44, 38);
             DeleteQuestionButton.TabIndex = 14;
-            DeleteQuestionButton.Text = "Delete Question";
+            DeleteQuestionButton.Text = "❌";
             DeleteQuestionButton.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // DeleteAnswerButton
             // 
-            button1.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.Red;
-            button1.Location = new Point(1248, 957);
-            button1.Name = "button1";
-            button1.Size = new Size(136, 27);
-            button1.TabIndex = 7;
-            button1.Text = "Delete Answer";
-            button1.UseVisualStyleBackColor = true;
+            DeleteAnswerButton.BackColor = Color.White;
+            DeleteAnswerButton.FlatStyle = FlatStyle.Flat;
+            DeleteAnswerButton.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            DeleteAnswerButton.ForeColor = Color.Red;
+            DeleteAnswerButton.Location = new Point(1349, 957);
+            DeleteAnswerButton.Margin = new Padding(0);
+            DeleteAnswerButton.Name = "DeleteAnswerButton";
+            DeleteAnswerButton.Size = new Size(35, 27);
+            DeleteAnswerButton.TabIndex = 7;
+            DeleteAnswerButton.Text = "❌";
+            DeleteAnswerButton.UseVisualStyleBackColor = false;
             // 
             // FinishTestButton
             // 
@@ -402,16 +385,45 @@
             FinishTestButton.UseVisualStyleBackColor = true;
             FinishTestButton.Click += FinishTestButton_Click;
             // 
+            // EditAnswerButton
+            // 
+            EditAnswerButton.BackColor = Color.White;
+            EditAnswerButton.FlatStyle = FlatStyle.Flat;
+            EditAnswerButton.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            EditAnswerButton.ForeColor = Color.Red;
+            EditAnswerButton.Location = new Point(1314, 957);
+            EditAnswerButton.Margin = new Padding(0);
+            EditAnswerButton.Name = "EditAnswerButton";
+            EditAnswerButton.Size = new Size(35, 27);
+            EditAnswerButton.TabIndex = 16;
+            EditAnswerButton.Text = "✏️";
+            EditAnswerButton.UseVisualStyleBackColor = false;
+            // 
+            // EditQuestionButton
+            // 
+            EditQuestionButton.BackColor = Color.White;
+            EditQuestionButton.Font = new Font("Verdana", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            EditQuestionButton.ForeColor = Color.Red;
+            EditQuestionButton.Location = new Point(1611, 16);
+            EditQuestionButton.Margin = new Padding(0);
+            EditQuestionButton.Name = "EditQuestionButton";
+            EditQuestionButton.Size = new Size(44, 38);
+            EditQuestionButton.TabIndex = 17;
+            EditQuestionButton.Text = "✏️";
+            EditQuestionButton.UseVisualStyleBackColor = false;
+            // 
             // CreateTestForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(13, 59, 76);
             ClientSize = new Size(1711, 1006);
+            Controls.Add(EditQuestionButton);
+            Controls.Add(EditAnswerButton);
             Controls.Add(FinishTestButton);
-            Controls.Add(button1);
+            Controls.Add(DeleteAnswerButton);
             Controls.Add(DeleteQuestionButton);
-            Controls.Add(pictureBox1);
+            Controls.Add(AnswerPictureBox);
             Controls.Add(ImagePreviewAnswerLabel);
             Controls.Add(AnswersLabel);
             Controls.Add(QuestionsLabel);
@@ -432,7 +444,7 @@
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)AnswerPictureBox).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -457,8 +469,6 @@
         private Label TextAboveImageLabel;
         private RichTextBox TextAboveImageRichTextBox;
         private Label AnswersLabel;
-        private Label TextBelowImageLabel;
-        private RichTextBox TextBelowImageRichTextBox;
         private CheckBox HasImageAnswerCheckBox;
         private CheckBox IsCorrectAnswerCheckBox;
         private RichTextBox AnswerTextRichTextBox;
@@ -467,9 +477,11 @@
         private TextBox AnswerImagePathTextBox;
         private Label AnswerImagePathLabel;
         private Label ImagePreviewAnswerLabel;
-        private PictureBox pictureBox1;
+        private PictureBox AnswerPictureBox;
         private Button DeleteQuestionButton;
-        private Button button1;
+        private Button DeleteAnswerButton;
         private Button FinishTestButton;
+        private Button EditAnswerButton;
+        private Button EditQuestionButton;
     }
 }

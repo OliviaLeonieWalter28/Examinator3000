@@ -17,12 +17,11 @@ namespace Examinator3000
         private List<Answer> answerList = new List<Answer>();
         public CreateTestForm()
         {
+            
             InitializeComponent();
             QuestionTypeSet();
             AnswerTypeSet();
-            // 04:50
-
-            //PicturePreviewPictureBox.ImageLocation = "/Images/test1.png";
+            LoadQuestions();
         }
 
         private void IsPictureQuestionCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -38,9 +37,6 @@ namespace Examinator3000
 
                 ImagePathLabel.Visible = true;
                 ImagePathTextBox.Visible = true;
-
-                TextBelowImageLabel.Visible = true;
-                TextBelowImageRichTextBox.Visible = true;
             }
             else
             {
@@ -49,10 +45,6 @@ namespace Examinator3000
                 ImagePathLabel.Visible = false;
                 ImagePathTextBox.Visible = false;
                 ImagePathTextBox.Clear();
-
-                TextBelowImageLabel.Visible = false;
-                TextBelowImageRichTextBox.Visible = false;
-                TextBelowImageRichTextBox.Clear();
             }
         }
         private void AnswerTypeSet()
@@ -67,6 +59,13 @@ namespace Examinator3000
                 AnswerImagePathLabel.Visible = false;
                 AnswerImagePathTextBox.Visible = false;
                 AnswerImagePathTextBox.Clear();
+            }
+        }
+        private void LoadQuestions() 
+        {
+            foreach(var question in Globals.CurrentActiveTest.Questions) 
+            {
+                QuestionsListBox.Items.Add(question.QuestionText);   
             }
         }
         private bool SendQuestion()
@@ -130,7 +129,6 @@ namespace Examinator3000
                 {
                     var answer = new Answer(AnswerTextRichTextBox.Text, IsCorrectAnswerCheckBox.Checked);
                     answerList.Add(answer);
-                    AnswersListBox.Items.Add(answer);
                     AnswersListBox.Items.Add($"Answer {answerList.Count}: {answer.GetAnswerText()}\t Correct Answer: {answer.isCorrectAnswer()}");
                 }
             }
@@ -160,8 +158,8 @@ namespace Examinator3000
 
         private void AnswerImagePathTextBox_TextChanged(object sender, EventArgs e)
         {
-            string imagePath = Path.Combine(Application.StartupPath, $"Images/Images{Globals.CurrentActiveTest.TestName}", ImagePathTextBox.Text);
-            PicturePreviewPictureBox.ImageLocation = imagePath;
+            string imagePath = Path.Combine(Application.StartupPath, $"Images/Images{Globals.CurrentActiveTest.TestName}", AnswerImagePathTextBox.Text);
+            AnswerPictureBox.ImageLocation = imagePath;
             PicturePreviewPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
