@@ -16,11 +16,14 @@ namespace Examinator3000
 
         public static Test CurrentActiveTest;
         public static Question CurrentActiveQuestion;
+        public static Answer CurrentActiveAnswer;
 
         public static bool Checked;
 
         public static int CurrentTestCorrectAnswers;
         public static bool LastQuestion;
+
+        public static TestMode ActiveTestMode;
 
         public static void AddTest(string testName) 
         {
@@ -61,6 +64,13 @@ namespace Examinator3000
             LoadedTests.Add(test);
             LoadedTestsBind.Add(test);  
             
+        }
+        public enum TestMode
+        {
+            QuestionsWithoutArchived,
+            ArchivedQuestions,
+            WeakQuestions,
+            MixedQuestions
         }
     }
 }

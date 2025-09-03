@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO.Pipes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,9 +16,10 @@ namespace Examinator3000
     public partial class CreateTestForm : Form
     {
         private List<Answer> answerList = new List<Answer>();
+        private bool editMode;
         public CreateTestForm()
         {
-            
+
             InitializeComponent();
             QuestionTypeSet();
             AnswerTypeSet();
@@ -61,11 +63,11 @@ namespace Examinator3000
                 AnswerImagePathTextBox.Clear();
             }
         }
-        private void LoadQuestions() 
+        private void LoadQuestions()
         {
-            foreach(var question in Globals.CurrentActiveTest.Questions) 
+            foreach (var question in Globals.CurrentActiveTest.Questions)
             {
-                QuestionsListBox.Items.Add(question.QuestionText);   
+                QuestionsListBox.Items.Add(question.QuestionText);
             }
         }
         private bool SendQuestion()
@@ -81,8 +83,18 @@ namespace Examinator3000
                             if (answer.isCorrectAnswer())
                             {
                                 Question question = new Question(TextAboveImageRichTextBox.Text, ImagePathTextBox.Text, answerList);
-                                Globals.CurrentActiveTest.AddNewQuestion(question);
-                                QuestionsListBox.Items.Add($"Question {Globals.CurrentActiveTest.Questions.Count()}: {question.QuestionImage}");
+                                if(Globals.CurrentActiveTest.Questions.Contains(Globals.CurrentActiveQuestion) && editMode == true) 
+                                {
+                                    var index = Globals.CurrentActiveTest.Questions.IndexOf(Globals.CurrentActiveQuestion);
+                                    Globals.CurrentActiveTest.Questions[index] = Globals.CurrentActiveQuestion;
+
+                                }
+                                else 
+                                {
+                                    Globals.CurrentActiveTest.AddNewQuestion(question);
+                                    QuestionsListBox.Items.Add($"Question {Globals.CurrentActiveTest.Questions.Count()}: {question.QuestionImage}");
+                                }
+                                
 
                                 return true;
                             }
@@ -101,8 +113,16 @@ namespace Examinator3000
                             if (answer.isCorrectAnswer())
                             {
                                 Question question = new Question(TextAboveImageRichTextBox.Text, null, answerList);
-                                Globals.CurrentActiveTest.AddNewQuestion(question);
-                                QuestionsListBox.Items.Add($"Question {Globals.CurrentActiveTest.Questions.Count()}: {question.QuestionText}");
+                                if (Globals.CurrentActiveTest.Questions.Contains(Globals.CurrentActiveQuestion) && editMode == true)
+                                {
+                                    var index = Globals.CurrentActiveTest.Questions.IndexOf(Globals.CurrentActiveQuestion);
+                                    Globals.CurrentActiveTest.Questions[index] = Globals.CurrentActiveQuestion; 
+                                }
+                                else 
+                                {
+                                    Globals.CurrentActiveTest.AddNewQuestion(question);
+                                    QuestionsListBox.Items.Add($"Question {Globals.CurrentActiveTest.Questions.Count()}: {question.QuestionText}");
+                                }
                                 return true;
 
                             }
@@ -141,12 +161,20 @@ namespace Examinator3000
 
         private void AddQuestionButton_Click(object sender, EventArgs e)
         {
-            bool success = SendQuestion();
-            if (success)
+            if (editMode) 
             {
-                answerList.Clear();
-                AnswersListBox.Items.Clear();
+
             }
+            else 
+            {
+                bool success = SendQuestion();
+                if (success)
+                {
+                    answerList.Clear();
+                    AnswersListBox.Items.Clear();
+                }
+            }
+        
         }
 
         private void ImagePathTextBox_TextChanged(object sender, EventArgs e)
@@ -172,6 +200,115 @@ namespace Examinator3000
         {
             FileWriter.SaveTests(Globals.LoadedTests);
             this.Close();
+        }
+
+        private void EditAnswerButton_Click(object sender, EventArgs e)
+        {
+            if (AnswersListBox.SelectedItem == null)
+            {
+                MessageBox.Show("No Answer selected!");
+                return;
+            }
+            foreach (var answer in answerList)
+            {
+                if (AnswersListBox.GetItemText(AnswersListBox.SelectedItem).Contains(answer.answerText))
+                {
+
+                    Globals.CurrentActiveAnswer = answer;
+
+                    EditAnswerForm editAnswerForm = new EditAnswerForm();
+                    editAnswerForm.ShowDialog();
+                }
+            }
+
+
+        }
+
+        private void DeleteAnswerButton_Click(object sender, EventArgs e)
+        {
+            if (AnswersListBox.SelectedItem == null)
+            {
+                MessageBox.Show("No Answer selected!");
+                return;
+            }
+            Answer answerToRemove = null;
+            foreach (var answer in answerList)
+            {
+                if (AnswersListBox.GetItemText(AnswersListBox.SelectedItem).Contains(answer.answerText))
+                {
+                    answerToRemove = (Answer)answer;
+                }
+            }
+            if (answerToRemove != null)
+            {
+                answerList.Remove(answerToRemove);
+                AnswersListBox.Items.Remove(AnswersListBox.SelectedItem);
+            }
+
+        }
+
+        private void DeleteQuestionButton_Click(object sender, EventArgs e)
+        {
+            if (QuestionsListBox.SelectedItem == null)
+            {
+                MessageBox.Show("No Answer selected!");
+                return;
+            }
+            Question questionsToRemove = null;
+            foreach (var question in Globals.CurrentActiveTest.Questions)
+            {
+                if (QuestionsListBox.GetItemText(QuestionsListBox.SelectedItem).Contains(question.QuestionText))
+                {
+                    questionsToRemove = (Question)question;
+                }
+            }
+            if (questionsToRemove != null)
+            {
+                Globals.CurrentActiveTest.Questions.Remove(questionsToRemove);
+                QuestionsListBox.Items.Remove(QuestionsListBox.SelectedItem);
+            }
+        }
+
+        private void EditQuestionButton_Click(object sender, EventArgs e)
+        {
+            AddQuestionButton.Text = "Update Question";
+            editMode = true;    
+            foreach(var question in Globals.CurrentActiveTest.Questions) 
+            {
+                if (QuestionsListBox.GetItemText(QuestionsListBox.SelectedItem).Contains(question.QuestionText))
+                {
+                    Globals.CurrentActiveQuestion = question;
+                }
+            }
+            FillFieldsOnEdit();
+
+        }
+        private void FillFieldsOnEdit() 
+        {
+            if (Globals.CurrentActiveQuestion.isPictureQuestion) 
+            {
+                IsPictureQuestionCheckBox.Checked = true;   
+                ImagePathTextBox.Text = Globals.CurrentActiveQuestion.QuestionImage;
+                PicturePreviewPictureBox.ImageLocation = Path.Combine(Application.StartupPath, $"Images/Images{Globals.CurrentActiveTest.TestName}", ImagePathTextBox.Text);
+                PicturePreviewPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            }
+            TextAboveImageRichTextBox.Text = Globals.CurrentActiveQuestion.QuestionText;
+            foreach (var answer in Globals.CurrentActiveQuestion.AnswerList) 
+            {
+ 
+               if (!String.IsNullOrWhiteSpace(answer.imagePath))
+               {
+                  answerList.Add(answer);
+                  AnswersListBox.Items.Add($"Answer {answerList.Count}: {answer.GetImagePath()}\t Correct Answer: {answer.isCorrectAnswer()}");
+               }
+
+                if (!String.IsNullOrWhiteSpace(answer.answerText))
+                {
+                  answerList.Add(answer);
+                  AnswersListBox.Items.Add($"Answer {answerList.Count}: {answer.GetAnswerText()}\t Correct Answer: {answer.isCorrectAnswer()}");
+                }
+                
+            }
         }
     }
 }

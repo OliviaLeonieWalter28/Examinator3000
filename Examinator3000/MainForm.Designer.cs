@@ -112,6 +112,7 @@
             StartArchivedQuestionsButton.TabIndex = 4;
             StartArchivedQuestionsButton.Text = "Start - Archived Questions";
             StartArchivedQuestionsButton.UseVisualStyleBackColor = false;
+            StartArchivedQuestionsButton.Click += StartArchivedQuestionsButton_Click;
             // 
             // StartWeakQuestionsButton
             // 
@@ -136,7 +137,7 @@
             StartMixedQuestionsButton.Name = "StartMixedQuestionsButton";
             StartMixedQuestionsButton.Size = new Size(236, 118);
             StartMixedQuestionsButton.TabIndex = 6;
-            StartMixedQuestionsButton.Text = "Start - Mixed Questions";
+            StartMixedQuestionsButton.Text = "Start - 30 Mixed Questions";
             StartMixedQuestionsButton.UseVisualStyleBackColor = false;
             // 
             // AmountOfQuestionsLabel

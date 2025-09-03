@@ -359,6 +359,7 @@
             DeleteQuestionButton.TabIndex = 14;
             DeleteQuestionButton.Text = "❌";
             DeleteQuestionButton.UseVisualStyleBackColor = false;
+            DeleteQuestionButton.Click += DeleteQuestionButton_Click;
             // 
             // DeleteAnswerButton
             // 
@@ -373,6 +374,7 @@
             DeleteAnswerButton.TabIndex = 7;
             DeleteAnswerButton.Text = "❌";
             DeleteAnswerButton.UseVisualStyleBackColor = false;
+            DeleteAnswerButton.Click += DeleteAnswerButton_Click;
             // 
             // FinishTestButton
             // 
@@ -398,6 +400,7 @@
             EditAnswerButton.TabIndex = 16;
             EditAnswerButton.Text = "✏️";
             EditAnswerButton.UseVisualStyleBackColor = false;
+            EditAnswerButton.Click += EditAnswerButton_Click;
             // 
             // EditQuestionButton
             // 
@@ -411,6 +414,7 @@
             EditQuestionButton.TabIndex = 17;
             EditQuestionButton.Text = "✏️";
             EditQuestionButton.UseVisualStyleBackColor = false;
+            EditQuestionButton.Click += EditQuestionButton_Click;
             // 
             // CreateTestForm
             // 

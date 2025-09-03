@@ -10,12 +10,12 @@ namespace Examinator3000
         public Examinator3000Main()
         {
             InitializeComponent();
-            
+
             FileWriter.LoadTests();
 
             TestsListBox.DataSource = Globals.LoadedTests;
             TestsListBox.DisplayMember = "TestName";
-           
+
             Instance = this;
 
         }
@@ -30,6 +30,7 @@ namespace Examinator3000
         {
             if (TestsListBox.SelectedItem != null)
             {
+                Globals.ActiveTestMode = Globals.TestMode.QuestionsWithoutArchived;
                 TestForm TestForm = new TestForm();
                 TestForm.ShowDialog();
             }
@@ -58,6 +59,16 @@ namespace Examinator3000
         {
             CreateTestForm createTestForm = new CreateTestForm();
             createTestForm.ShowDialog();
+        }
+
+        private void StartArchivedQuestionsButton_Click(object sender, EventArgs e)
+        {
+            if (TestsListBox.SelectedItem != null)
+            {
+                Globals.ActiveTestMode = Globals.TestMode.ArchivedQuestions;
+                TestForm TestForm = new TestForm();
+                TestForm.ShowDialog();
+            }
         }
     }
 }
